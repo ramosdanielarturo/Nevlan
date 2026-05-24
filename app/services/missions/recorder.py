@@ -50,6 +50,8 @@ from app.services.missions.recorder_capture_contract import (
     enforce_target_identity_isolation,
     is_uia_weak,
     maybe_run_ocr,
+    CAPTURE_PHASE_PRE_CLICK,
+    ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
 )
 
 # Opcional: obtener process_name a partir del pid
@@ -390,6 +392,10 @@ class MouseListener(InputListener):
         self._intent_handle = intent_layer_handle
         self._strict_intent = bool(strict_intent_interception)
 
+        # FASE 1 — pre-click: anchor en mouse_down (pynput pressed=True).
+        self._pending_click_lock = threading.Lock()
+        self._pending_click: Optional[Dict[str, Any]] = None
+
     # ──────────────────────────────────────────────────────────────
     def start(self) -> None:
         if self._active:
@@ -458,6 +464,25 @@ class MouseListener(InputListener):
                         "down_x": x, "down_y": y, "t0": now, "button": btn_str,
                         "fired_click": False,
                     }
+                    try:
+                        wctx = _get_window_context_at_point(int(x), int(y))
+                        pre_anchor = capture_target_anchor(
+                            wctx,
+                            None,
+                            phase=CAPTURE_PHASE_PRE_CLICK,
+                            source=ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
+                        )
+                        with self._pending_click_lock:
+                            self._pending_click = {
+                                "x": int(x),
+                                "y": int(y),
+                                "button": btn_str,
+                                "t_down": now,
+                                "window_ctx": wctx,
+                                "before_anchor": pre_anchor,
+                            }
+                    except Exception as e:
+                        log.debug(f"pre_click pending capture failed: {e}")
                     return
                 # released ===========================
                 # ── Captura del timestamp REAL ─────────────────────
@@ -491,9 +516,13 @@ class MouseListener(InputListener):
                         return
                 # Si no fue drag → flush como click en el punto de release
                 # (compatible con comportamiento estándar de Windows).
+                pending_click: Optional[Dict[str, Any]] = None
+                with self._pending_click_lock:
+                    pending_click = self._pending_click
+                    self._pending_click = None
                 threading.Thread(
                     target=self._process_click,
-                    args=(x, y, btn_str, capture_ts, capture_seq),
+                    args=(x, y, btn_str, capture_ts, capture_seq, pending_click),
                     daemon=True,
                 ).start()
                 self._drag_state = {}
@@ -526,6 +555,7 @@ class MouseListener(InputListener):
         self, x: int, y: int, btn_str: str,
         capture_ts: Optional[datetime] = None,
         capture_seq: Optional[int] = None,
+        pending_click: Optional[Dict[str, Any]] = None,
     ):
         # ── PRD 2026-05-10j (fail-safe Intent Interception) ──
         # Si la grabación es estricta y la capa NO está activa,
@@ -582,11 +612,15 @@ class MouseListener(InputListener):
             # Contexto basado en el PUNTO del click (no en el foreground):
             # así, si Nevlan o el overlay estaban arriba, no contaminan.
             window_ctx = _get_window_context_at_point(x, y)
-            # PRD 2026-05-10i (target ↔ outcome isolation):
-            # Anchor del estado AT-CLICK. Lo usamos al final para
-            # comparar con el estado después de UIA/web/visual capture
-            # y migrar a debug_after_state si algo cambió.
-            before_anchor = capture_target_anchor(window_ctx, None)
+            if pending_click and pending_click.get("window_ctx") is not None:
+                window_ctx = pending_click.get("window_ctx") or window_ctx
+            # FASE 1: identidad solo desde anchor pre_click (mouse_down).
+            had_pending = bool(
+                pending_click and pending_click.get("before_anchor") is not None
+            )
+            before_anchor = (
+                pending_click.get("before_anchor") if had_pending else None
+            )
             metadata = self._capture_uia(x, y)
 
             # ── Web capture (Chrome/Edge/Firefox) ─────────────────
