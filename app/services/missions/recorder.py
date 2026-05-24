@@ -50,10 +50,12 @@ from app.services.missions.recorder_capture_contract import (
     enforce_target_identity_isolation,
     is_uia_weak,
     maybe_run_ocr,
+    attach_precapture_diagnostics,
     CAPTURE_PHASE_PRE_CLICK,
     ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
     CAPTURE_PHASE_POST_ACTION,
     ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
+    TARGET_PRECAPTURE_MISSING,
 )
 
 # Opcional: obtener process_name a partir del pid
@@ -623,7 +625,16 @@ class MouseListener(InputListener):
             before_anchor = (
                 pending_click.get("before_anchor") if had_pending else None
             )
+            missing_precapture = ""
+            if before_anchor is None:
+                missing_precapture = TARGET_PRECAPTURE_MISSING
             metadata = self._capture_uia(x, y)
+            attach_precapture_diagnostics(
+                metadata,
+                before_anchor=before_anchor,
+                had_pending=had_pending,
+                missing_reason=missing_precapture,
+            )
 
             # ── Web capture (Chrome/Edge/Firefox) ─────────────────
             # Si la app destino es un navegador soportado, intentamos
