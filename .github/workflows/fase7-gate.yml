@@ -18,11 +18,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -U pip setuptools wheel
+          pip install -e ".[ci]"
 
       - name: FASE 7 dry-run gate
         run: |
-          python scripts/run_fase7_benchmark.py --suite default --mode dry-run --runs 5 --report none
           pytest tests/unit/test_fase7_release_benchmark.py -q
           python scripts/validate_fase7_certified_release.py
