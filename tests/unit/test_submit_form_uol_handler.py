@@ -76,11 +76,13 @@ class TestSubmitFormUolCompilation:
 
 
 class TestSubmitFormHandlerSuccess:
+    @patch("app.services.missions.uol_action_handlers._ensure_dialog_foreground", return_value=True)
+    @patch("app.services.missions.uol_action_handlers._scan_visible_windows_for_dialog", return_value=True)
     @patch("app.services.missions.uol_action_handlers._validate_save_outcome", return_value=True)
     @patch("app.services.missions.uol_action_handlers._fill_save_dialog_path", return_value=True)
     @patch("app.services.missions.uol_action_handlers._hotkey", return_value=True)
     @patch("app.services.missions.uol_action_handlers._submit_input_surface_ready", return_value=(True, ""))
-    def test_save_with_path_success(self, _ready, _hk, _dlg, _val):
+    def test_save_with_path_success(self, _ready, _hk, _dlg, _val, _scan, _fg):
         res = uol_submit_form(
             _step(action="save", path="fase7_benchmark.txt"),
             StateSnapshot(active_window_title="fase7_benchmark.txt - Notepad"),
@@ -119,22 +121,63 @@ class TestSubmitFormHandlerFailures:
         assert not res.ok
         assert res.extra.get("submit_failure_reason") == SUBMIT_CONTROL_NOT_FOUND
 
+    @patch("app.services.missions.uol_action_handlers._ensure_dialog_foreground", return_value=True)
+    @patch("app.services.missions.uol_action_handlers._scan_visible_windows_for_dialog", return_value=True)
     @patch("app.services.missions.uol_action_handlers._validate_save_outcome", return_value=False)
     @patch("app.services.missions.uol_action_handlers._fill_save_dialog_path", return_value=True)
     @patch("app.services.missions.uol_action_handlers._hotkey", return_value=True)
     @patch("app.services.missions.uol_action_handlers._submit_input_surface_ready", return_value=(True, ""))
-    def test_save_outcome_not_confirmed(self, _ready, _hk, _dlg, _val):
+    def test_save_outcome_not_confirmed(self, _ready, _hk, _dlg, _val, _scan, _fg):
         res = uol_submit_form(_step(action="save", path="out.txt"), StateSnapshot())
         assert not res.ok
         assert res.extra.get("submit_failure_reason") == SUBMIT_OUTCOME_NOT_CONFIRMED
 
+    @patch("app.services.missions.uol_action_handlers._ensure_dialog_foreground", return_value=True)
+    @patch("app.services.missions.uol_action_handlers._scan_visible_windows_for_dialog", return_value=True)
     @patch("app.services.missions.uol_action_handlers._fill_save_dialog_path", return_value=False)
     @patch("app.services.missions.uol_action_handlers._hotkey", return_value=True)
     @patch("app.services.missions.uol_action_handlers._submit_input_surface_ready", return_value=(True, ""))
-    def test_save_dialog_not_ready(self, _ready, _hk, _dlg):
+    def test_save_dialog_not_ready(self, _ready, _hk, _dlg, _scan, _fg):
         res = uol_submit_form(_step(action="save", path="out.txt"), StateSnapshot())
         assert not res.ok
         assert res.extra.get("submit_failure_reason") == SAVE_DIALOG_NOT_READY
+
+
+class TestSaveDialogHelpers:
+    def test_uia_markers_detect_filename_field(self):
+        from app.services.missions.uol_action_handlers import _uia_control_has_save_dialog_markers
+
+        root = MagicMock()
+        root.Exists.return_value = True
+        root.EditControl.return_value.Exists.return_value = True
+        root.ComboBoxControl.return_value.Exists.return_value = False
+        root.ButtonControl.return_value.Exists.return_value = False
+        assert _uia_control_has_save_dialog_markers(root)
+
+    def test_uia_markers_false_without_controls(self):
+        from app.services.missions.uol_action_handlers import _uia_control_has_save_dialog_markers
+
+        root = MagicMock()
+        root.Exists.return_value = True
+        root.EditControl.return_value.Exists.return_value = False
+        root.ComboBoxControl.return_value.Exists.return_value = False
+        root.ButtonControl.return_value.Exists.return_value = False
+        assert not _uia_control_has_save_dialog_markers(root)
+
+    @patch("app.services.missions.uol_action_handlers._click_save_dialog_button", return_value=True)
+    @patch("app.services.missions.uol_action_handlers._find_save_filename_edit")
+    @patch("app.services.missions.uol_action_handlers._locate_save_dialog_uia")
+    @patch("app.services.missions.uol_action_handlers._hotkey", return_value=True)
+    @patch("app.services.missions.uol_action_handlers._type_text", return_value=True)
+    def test_fill_save_dialog_path_success(self, _type, _hk, locate, find_edit, _btn):
+        from app.services.missions.uol_action_handlers import _fill_save_dialog_path
+
+        dlg = MagicMock()
+        edit = MagicMock()
+        locate.return_value = dlg
+        find_edit.return_value = edit
+        assert _fill_save_dialog_path("out.txt") is True
+        _btn.assert_called_once_with(dlg)
 
 
 class TestSubmitFormNoForbiddenStrategies:

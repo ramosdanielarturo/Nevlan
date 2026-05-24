@@ -1744,6 +1744,13 @@ _POSITIVE_DISMISS_LABELS = (
 )
 _CANCEL_LABELS = ("Cancel", "Cancelar", "No", "Close", "Cerrar")
 _SAVE_LABELS = ("Save", "Guardar", "&Save", "S&ave")
+_SAVE_FILENAME_LABELS = (
+    "File name:",
+    "Nombre:",
+    "Nombre del archivo:",
+    "File name",
+    "Name:",
+)
 
 
 def _confirm_fail(
@@ -2035,60 +2042,141 @@ def _submit_input_surface_ready(state: StateSnapshot) -> Tuple[bool, str]:
     return ready, reason
 
 
+def _uia_control_has_save_dialog_markers(root: Any) -> bool:
+    if root is None:
+        return False
+    try:
+        if not root.Exists(0.12, 0):
+            return False
+    except Exception:
+        return False
+    try:
+        import uiautomation as auto  # type: ignore
+
+        for nm in _SAVE_FILENAME_LABELS:
+            if root.EditControl(searchDepth=12, SubName=nm).Exists(0.15, 0):
+                return True
+            if root.ComboBoxControl(searchDepth=12, SubName=nm).Exists(0.15, 0):
+                return True
+        for btn in _SAVE_LABELS:
+            if root.ButtonControl(searchDepth=12, Name=btn).Exists(0.15, 0):
+                return True
+        if root.ButtonControl(searchDepth=12, SubName="Save").Exists(0.15, 0):
+            return True
+        if root.ButtonControl(searchDepth=12, SubName="Guardar").Exists(0.15, 0):
+            return True
+    except Exception as exc:
+        log.debug("[UOL] save dialog markers: %s", exc)
+    return False
+
+
+def _locate_save_dialog_uia(auto: Any) -> Any:
+    """Localiza diálogo Guardar como (incl. Notepad ES con título app)."""
+    for wname in ("Save As", "Guardar como", "Save", "Guardar"):
+        candidate = auto.WindowControl(searchDepth=2, SubName=wname)
+        if candidate.Exists(0.35, 0) and _uia_control_has_save_dialog_markers(candidate):
+            return candidate
+    for wname in ("Bloc de notas", "Notepad", "Bloc de notes"):
+        for factory in (
+            lambda n=wname: auto.WindowControl(searchDepth=2, Name=n),
+            lambda n=wname: auto.WindowControl(searchDepth=2, SubName=n),
+        ):
+            candidate = factory()
+            if candidate.Exists(0.3, 0) and _uia_control_has_save_dialog_markers(candidate):
+                return candidate
+    fg = auto.GetForegroundControl()
+    if _uia_control_has_save_dialog_markers(fg):
+        return fg
+    return None
+
+
+def _find_save_filename_edit(dlg: Any) -> Any:
+    try:
+        import uiautomation as auto  # type: ignore
+
+        probes = [
+            dlg.EditControl(searchDepth=10, Name="File name:"),
+            dlg.EditControl(searchDepth=10, Name="Nombre:"),
+            dlg.EditControl(searchDepth=10, SubName="Nombre"),
+            dlg.EditControl(searchDepth=10, SubName="File name"),
+            dlg.ComboBoxControl(searchDepth=10, SubName="Nombre"),
+            dlg.ComboBoxControl(searchDepth=10, SubName="File name"),
+            dlg.ComboBoxControl(searchDepth=10),
+            dlg.EditControl(searchDepth=10),
+        ]
+        for ctl in probes:
+            if ctl.Exists(0.35, 0):
+                combo_edit = ctl.EditControl(searchDepth=2)
+                if combo_edit.Exists(0.2, 0):
+                    return combo_edit
+                return ctl
+        for child in dlg.GetChildren():
+            if str(getattr(child, "ControlTypeName", "") or "").endswith("EditControl"):
+                if child.Exists(0.1, 0):
+                    return child
+    except Exception as exc:
+        log.debug("[UOL] save filename edit: %s", exc)
+    return None
+
+
+def _click_save_dialog_button(dlg: Any) -> bool:
+    for btn_name in _SAVE_LABELS:
+        btn = dlg.ButtonControl(searchDepth=10, Name=btn_name)
+        if btn.Exists(0.35, 0):
+            btn.Click(simulateMove=False)
+            time.sleep(0.5)
+            return True
+    for sub in ("Save", "Guardar"):
+        btn = dlg.ButtonControl(searchDepth=10, SubName=sub)
+        if btn.Exists(0.35, 0):
+            btn.Click(simulateMove=False)
+            time.sleep(0.5)
+            return True
+    return bool(_press("enter"))
+
+
 def _fill_save_dialog_path(path: str) -> bool:
     try:
         import uiautomation as auto  # type: ignore
 
         dlg = None
-        for wname in ("Save As", "Guardar como", "Save", "Guardar"):
-            candidate = auto.WindowControl(searchDepth=2, SubName=wname)
-            if candidate.Exists(0.8, 0):
-                dlg = candidate
-                break
-        if dlg is None:
-            fg = auto.GetForegroundControl()
-            if fg and fg.Exists(0.2, 0):
-                dlg = fg
-        if dlg is None or not dlg.Exists(0.2, 0):
-            return False
-
-        edit = None
-        for ctl in (
-            dlg.EditControl(searchDepth=8, Name="File name:"),
-            dlg.EditControl(searchDepth=8, Name="Nombre:"),
-            dlg.ComboBoxControl(searchDepth=8),
-            dlg.EditControl(searchDepth=8),
-        ):
-            if ctl.Exists(0.4, 0):
-                edit = ctl
-                break
-        if edit is None:
-            return False
-        try:
-            edit.Click(simulateMove=False)
-            time.sleep(0.08)
-        except Exception:
-            pass
-        _hotkey("ctrl", "a")
-        time.sleep(0.05)
-        if not _type_text(path, interval=0.01):
-            try:
-                import pyperclip  # type: ignore
-
-                pyperclip.copy(path)
-                time.sleep(0.05)
-                if not _hotkey("ctrl", "v"):
-                    return False
-            except Exception:
+        with auto.UIAutomationInitializerInThread():  # type: ignore[attr-defined]
+            for _ in range(12):
+                dlg = _locate_save_dialog_uia(auto)
+                if dlg is not None:
+                    break
+                time.sleep(0.25)
+            if dlg is None:
                 return False
-        time.sleep(0.1)
-        for btn_name in ("Save", "Guardar", "&Save", "S&ave"):
-            btn = dlg.ButtonControl(searchDepth=8, Name=btn_name)
-            if btn.Exists(0.3, 0):
-                btn.Click(simulateMove=False)
-                time.sleep(0.5)
-                return True
-        return bool(_press("enter"))
+
+            try:
+                dlg.SetFocus()
+                time.sleep(0.1)
+            except Exception:
+                pass
+
+            edit = _find_save_filename_edit(dlg)
+            if edit is None:
+                return False
+            try:
+                edit.Click(simulateMove=False)
+                time.sleep(0.08)
+            except Exception:
+                pass
+            _hotkey("ctrl", "a")
+            time.sleep(0.05)
+            if not _type_text(path, interval=0.01):
+                try:
+                    import pyperclip  # type: ignore
+
+                    pyperclip.copy(path)
+                    time.sleep(0.05)
+                    if not _hotkey("ctrl", "v"):
+                        return False
+                except Exception:
+                    return False
+            time.sleep(0.1)
+            return _click_save_dialog_button(dlg)
     except Exception as exc:
         log.debug("[UOL] save dialog: %s", exc)
         return False
@@ -2118,7 +2206,12 @@ def _save_via_hotkey_and_dialog(path: str) -> Tuple[bool, str, List[str]]:
     if not _hotkey("ctrl", "s"):
         return False, SUBMIT_CONTROL_NOT_FOUND, path_steps
     path_steps.append("activate_submit")
-    time.sleep(0.6)
+    for _ in range(14):
+        if _scan_visible_windows_for_dialog():
+            break
+        time.sleep(0.2)
+    _ensure_dialog_foreground()
+    time.sleep(0.15)
     if path:
         if not _fill_save_dialog_path(path):
             return False, SAVE_DIALOG_NOT_READY, path_steps

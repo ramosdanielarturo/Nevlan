@@ -24,7 +24,7 @@ Fixture congelado: `tests/fixtures/fase7_benchmark/fase7_certified_live_baseline
 | ID | Categoría | Notas post-certificación |
 |----|-----------|--------------------------|
 | `chrome_youtube_launcher` | launcher·browser·search | weakest: `search_content:uol_surface` |
-| `notepad_write_save` | launcher·editor | P1: `submit_form` cae a `submit_input:uol_submit` (fallback estable) |
+| `notepad_write_save` | launcher·editor | P1 cerrado post-release: `submit_form:uol_submit` 5/5 live |
 | `web_form_simple` | browser·form | weakest: `submit_form:uol_submit` |
 | `confirmation_dialog` | dialog·context | weakest: `open_app` / `switch_context` |
 | `relayout_window` | browser·layout | weakest: `open_url` / `navigate_to_location` |
@@ -144,13 +144,21 @@ Gate evaluado en `app/services/runtime/fase7_release_gate.py`:
 
 ---
 
-## P1 post-release (no blocker certificado)
+## P1 post-release — save dialog primario (cerrado)
 
-Endurecer `_fill_save_dialog_path` para que `notepad_write_save` use
-`submit_form:uol_submit` 5/5 sin fallback `submit_input:uol_submit`.
+Endurecido `_fill_save_dialog_path` + polling post-Ctrl+S + foco modal Notepad ES.
 
-> El baseline certificado (`fase7_certified_live_baseline.json`) **no se altera**;
-> refleja el sello histórico 25/25 al momento de congelación.
+> Post-release: mejora de determinismo premium. El baseline certificado
+> (`fase7_certified_live_baseline.json`) **no se altera**; conserva el sello
+> histórico 25/25 al momento de congelación (`fase7-runtime-v1`).
+
+Verificación (2026-05-24):
+
+```powershell
+python scripts/run_fase7_benchmark.py --mission notepad_write_save --mode live --runs 5 --timeout 600
+```
+
+Resultado: **5/5** con `strategy_used: "submit_form:uol_submit"` (sin fallback `submit_input`).
 
 ---
 
