@@ -95,6 +95,18 @@ DEFAULT_POST_DELAYS_MS: Tuple[int, ...] = (300, 800, 1500)
 #: peor caso (1.5 s de delay + ~500 ms de captura).
 DEFAULT_POST_WAIT_MS: int = 2000
 
+#: Fases formales de captura de anchor (FASE 1 / Pre-Click Capture).
+CAPTURE_PHASE_PRE_CLICK: str = "pre_click"
+CAPTURE_PHASE_POST_ACTION: str = "post_action"
+
+#: Telemetría cuando no hubo pending mousedown → no inventar identidad.
+TARGET_PRECAPTURE_MISSING: str = "TARGET_PRECAPTURE_MISSING"
+
+#: Fuentes conocidas de anchor.
+ANCHOR_SOURCE_PYNPUT_MOUSEDOWN: str = "pynput/mousedown"
+ANCHOR_SOURCE_PYNPUT_POST_CAPTURE: str = "pynput/post_capture"
+ANCHOR_SOURCE_INTENT_LAYER: str = "intent_layer/mousedown"
+
 #: Tamaños progresivos (lado en píxeles) para crops de OCR alrededor
 #: del click cuando UIA es débil. Pequeño → mediano → grande.
 DEFAULT_OCR_REGION_STEPS_PX: Tuple[int, ...] = (240, 420, 640)
@@ -129,8 +141,8 @@ class TargetAnchor:
     y la captura UIA/web. Si cambió, esa captura ya no puede usarse
     como ``target_identity`` — pertenece al ``post_action_state``.
 
-    Regla: ``target_identity`` solo puede usar evidencia capturada
-    antes/durante el click. Outcome valida; nunca identifica.
+    Regla (FASE 1): ``target_identity`` solo puede leerse de un anchor
+    con ``phase == pre_click``. Anchors ``post_action`` son debug/outcome.
     """
 
     hwnd: Optional[int] = None
@@ -138,6 +150,9 @@ class TargetAnchor:
     process: str = ""
     url: str = ""
     captured_at_ms: int = 0
+    phase: str = ""
+    ts_monotonic_ns: int = 0
+    source: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -146,7 +161,25 @@ class TargetAnchor:
             "process": str(self.process or ""),
             "url": str(self.url or ""),
             "captured_at_ms": int(self.captured_at_ms),
+            "phase": str(self.phase or ""),
+            "ts_monotonic_ns": int(self.ts_monotonic_ns or 0),
+            "source": str(self.source or ""),
         }
+
+    @classmethod
+    def from_dict(cls, data: Optional[Dict[str, Any]]) -> Optional["TargetAnchor"]:
+        if not isinstance(data, dict):
+            return None
+        return cls(
+            hwnd=data.get("hwnd"),
+            title=str(data.get("title") or ""),
+            process=str(data.get("process") or ""),
+            url=str(data.get("url") or ""),
+            captured_at_ms=int(data.get("captured_at_ms") or 0),
+            phase=str(data.get("phase") or ""),
+            ts_monotonic_ns=int(data.get("ts_monotonic_ns") or 0),
+            source=str(data.get("source") or ""),
+        )
 
 
 @dataclass
@@ -461,13 +494,20 @@ def capture_target_anchor(
     window_ctx: Any,
     web_meta: Optional[Dict[str, Any]] = None,
     *,
+    phase: str = CAPTURE_PHASE_POST_ACTION,
+    source: str = "",
     clock_ms: Optional[Callable[[], int]] = None,
+    monotonic_ns: Optional[int] = None,
 ) -> TargetAnchor:
-    """Captura un anchor estructural del estado AT click time / AT
-    UIA-capture time. Acepta tanto un objeto ``WindowContext`` (con
-    atributos) como un dict equivalente — útil para tests.
+    """Captura un anchor estructural del estado en un instante.
+
+    FASE 1 — dos fases formales:
+
+      * ``phase="pre_click"`` — mouse_down / antes de mutación UI (identidad).
+      * ``phase="post_action"`` — tras captura UIA/web (outcome/debug).
     """
-    clk = (clock_ms or _wall_ms)()
+    clk = int((clock_ms or _wall_ms)())
+    mono = int(monotonic_ns if monotonic_ns is not None else time.monotonic_ns())
     hwnd: Optional[int] = None
     title = ""
     proc = ""
@@ -475,7 +515,7 @@ def capture_target_anchor(
         if isinstance(window_ctx, dict):
             hwnd = window_ctx.get("hwnd")
             title = str(window_ctx.get("title") or "")
-            proc = str(window_ctx.get("process_name") or "")
+            proc = str(window_ctx.get("process_name") or window_ctx.get("process") or "")
         else:
             hwnd = getattr(window_ctx, "hwnd", None)
             title = str(getattr(window_ctx, "title", "") or "")
@@ -484,8 +524,34 @@ def capture_target_anchor(
     if isinstance(web_meta, dict):
         url = str(web_meta.get("url") or "")
     return TargetAnchor(
-        hwnd=hwnd, title=title, process=proc, url=url, captured_at_ms=int(clk),
+        hwnd=hwnd,
+        title=title,
+        process=proc,
+        url=url,
+        captured_at_ms=clk,
+        phase=str(phase or ""),
+        ts_monotonic_ns=mono,
+        source=str(source or ""),
     )
+
+
+def is_identity_anchor(anchor: Optional[TargetAnchor]) -> bool:
+    """True si el anchor puede usarse para ``target_identity``."""
+    return (
+        anchor is not None
+        and str(anchor.phase or "") == CAPTURE_PHASE_PRE_CLICK
+    )
+
+
+def resolve_identity_anchor(
+    before: Optional[TargetAnchor],
+    after: Optional[TargetAnchor] = None,
+) -> Optional[TargetAnchor]:
+    """Devuelve el anchor autorizado para identidad (solo ``pre_click``)."""
+    _ = after
+    if is_identity_anchor(before):
+        return before
+    return None
 
 
 def detect_state_change(
@@ -1346,6 +1412,14 @@ __all__ = [
     "detect_state_change",
     "enforce_target_identity_isolation",
     "compute_trusted_pre_action_identity",
+    "CAPTURE_PHASE_PRE_CLICK",
+    "CAPTURE_PHASE_POST_ACTION",
+    "TARGET_PRECAPTURE_MISSING",
+    "ANCHOR_SOURCE_PYNPUT_MOUSEDOWN",
+    "ANCHOR_SOURCE_PYNPUT_POST_CAPTURE",
+    "ANCHOR_SOURCE_INTENT_LAYER",
+    "is_identity_anchor",
+    "resolve_identity_anchor",
     "DEFAULT_BUFFER_CAPACITY",
     "DEFAULT_BUFFER_PERIOD_MS",
     "DEFAULT_PRE_SNAPSHOT_MAX_AGE_MS",
