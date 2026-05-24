@@ -52,6 +52,8 @@ from app.services.missions.recorder_capture_contract import (
     maybe_run_ocr,
     CAPTURE_PHASE_PRE_CLICK,
     ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
+    CAPTURE_PHASE_POST_ACTION,
+    ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
 )
 
 # Opcional: obtener process_name a partir del pid
@@ -870,6 +872,8 @@ class MouseListener(InputListener):
                 after_anchor = capture_target_anchor(
                     _get_window_context_at_point(x, y),
                     metadata.get("web"),
+                    phase=CAPTURE_PHASE_POST_ACTION,
+                    source=ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
                 )
                 enforce_target_identity_isolation(
                     metadata,

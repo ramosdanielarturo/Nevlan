@@ -46,11 +46,14 @@ from app.contracts.mission import (
     WindowContext,
 )
 from app.services.missions.recorder_capture_contract import (
+    CAPTURE_PHASE_POST_ACTION,
+    CAPTURE_PHASE_PRE_CLICK,
     TargetAnchor,
     build_capture_contract,
     capture_target_anchor,
     detect_state_change,
     enforce_target_identity_isolation,
+    resolve_identity_anchor,
 )
 from app.services.missions.recorder_truth_layer import evaluate_event
 from app.services.missions.screen_element_reader import read_visual_target
@@ -59,6 +62,18 @@ from app.services.missions.screen_element_reader import read_visual_target
 def _t(ms: int) -> datetime:
     base = datetime(2026, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
     return base + timedelta(milliseconds=ms)
+
+
+def _pre_anchor(**kwargs: Any) -> TargetAnchor:
+    base = {"phase": CAPTURE_PHASE_PRE_CLICK, "source": "test/pre_click"}
+    base.update(kwargs)
+    return TargetAnchor(**base)
+
+
+def _post_anchor(**kwargs: Any) -> TargetAnchor:
+    base = {"phase": CAPTURE_PHASE_POST_ACTION, "source": "test/post_action"}
+    base.update(kwargs)
+    return TargetAnchor(**base)
 
 
 def _click(
@@ -160,11 +175,11 @@ def test_uia_captured_after_state_change_moved_to_debug_after_state() -> None:
         "target_source": "uia",
         "quality_level": "medium",
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=200, title="¿Quién eres? - Google Chrome",
         process="chrome.exe", url="", captured_at_ms=1000,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=300, title="Nueva pestaña - Daniel Arturo Ramos - Google Chrome",
         process="chrome.exe", url="", captured_at_ms=1080,
     )
@@ -204,11 +219,11 @@ def test_web_captured_after_url_change_moved_to_debug_after_state() -> None:
         "uia": {"name": "Dashboard button", "control_type": "ButtonControl"},
         "web": {"url": "https://a/dashboard", "tag_name": "div"},
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=11, title="App", process="chrome.exe",
         url="https://a/login", captured_at_ms=1000,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=11, title="App", process="chrome.exe",
         url="https://a/dashboard", captured_at_ms=1080,
     )
@@ -239,12 +254,16 @@ def test_clean_capture_keeps_uia_in_target_identity() -> None:
         "target_source": "uia",
         "quality_level": "high",
     }
-    anchor = TargetAnchor(
+    anchor = _pre_anchor(
+        hwnd=11, title="App", process="app.exe", url="",
+        captured_at_ms=1000,
+    )
+    after_same = _post_anchor(
         hwnd=11, title="App", process="app.exe", url="",
         captured_at_ms=1000,
     )
     out = enforce_target_identity_isolation(
-        metadata, before=anchor, after=anchor,
+        metadata, before=anchor, after=after_same,
     )
     assert out["uia"]["name"] == "OK"
     assert out["target_source"] == "uia"
@@ -276,11 +295,11 @@ def test_truth_layer_does_not_see_post_action_uia_as_target() -> None:
         "target_source": "uia",
         "quality_level": "medium",
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=11, title="Login", process="app.exe", url="",
         captured_at_ms=1000,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=22, title="Dashboard", process="app.exe", url="",
         captured_at_ms=1080,
     )
@@ -317,12 +336,12 @@ def test_outcome_can_validate_but_does_not_invent_target_text() -> None:
         "target_source": "uia",
         "quality_level": "medium",
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=11, title="¿Quién eres? - X", process="app.exe", url="",
         captured_at_ms=1000,
     )
-    after = TargetAnchor(
-        hwnd=22, title="Inicio - X",  # outcome: title cambió, picker cerró
+    after = _post_anchor(
+        hwnd=22, title="Inicio - X",
         process="app.exe", url="", captured_at_ms=1080,
     )
     enforce_target_identity_isolation(metadata, before=before, after=after)
@@ -347,11 +366,11 @@ def test_target_identity_isolation_audit_records_changes() -> None:
     metadata: Dict[str, Any] = {
         "uia": {"name": "Login", "control_type": "ButtonControl"},
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=11, title="A", process="app.exe", url="",
         captured_at_ms=1000,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=11, title="A", process="app.exe", url="",
         captured_at_ms=1100,
     )
@@ -386,11 +405,11 @@ def test_trusted_pre_action_preserves_uia_when_app_changes_after_click() -> None
             "environment": {"primary_screen_px": {"w": 1920, "h": 1080}},
         },
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=1, title="Search", process="SearchUI.exe", url="",
         captured_at_ms=1000,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=2, title="Chrome", process="chrome.exe", url="",
         captured_at_ms=1100,
     )
@@ -435,10 +454,10 @@ def test_ambiguous_weak_uia_still_migrates_on_app_change() -> None:
             "environment": {"primary_screen_px": {"w": 1920, "h": 1080}},
         },
     }
-    before = TargetAnchor(
+    before = _pre_anchor(
         hwnd=1, title="A", process="a.exe", url="", captured_at_ms=1,
     )
-    after = TargetAnchor(
+    after = _post_anchor(
         hwnd=2, title="B", process="b.exe", url="", captured_at_ms=2,
     )
     out = enforce_target_identity_isolation(
@@ -480,3 +499,42 @@ def test_capture_target_anchor_accepts_window_context_and_dict() -> None:
     assert z.hwnd is None
     assert z.title == ""
     assert z.captured_at_ms == 3000
+
+
+def test_after_anchor_with_rich_uia_never_used_for_identity() -> None:
+    """Regresión FASE 1: post_action no entra a identidad aunque sea rico."""
+    before = capture_target_anchor(
+        {"hwnd": 100, "title": "Login", "process_name": "app.exe"},
+        phase=CAPTURE_PHASE_PRE_CLICK,
+        source="pynput/mousedown",
+    )
+    after = capture_target_anchor(
+        {"hwnd": 200, "title": "Dashboard", "process_name": "chrome.exe"},
+        {"url": "https://youtube.com/results"},
+        phase=CAPTURE_PHASE_POST_ACTION,
+        source="pynput/post_capture",
+    )
+    assert resolve_identity_anchor(None, after) is None
+    metadata = {
+        "uia": {
+            "name": "Video Title",
+            "automation_id": "video-title",
+            "control_type": "HyperlinkControl",
+            "bbox": {"left": 10, "top": 10, "width": 120, "height": 24},
+        },
+        "web": {"url": "https://youtube.com/results"},
+        "target_source": "uia",
+        "target_signature": {
+            "environment": {"primary_screen_px": {"w": 1920, "h": 1080}},
+        },
+    }
+    out = enforce_target_identity_isolation(
+        metadata,
+        before=before,
+        after=after,
+        click_xy=(20, 20),
+    )
+    iso = out["target_identity_isolation"]
+    assert iso["identity_before"]["phase"] == CAPTURE_PHASE_PRE_CLICK
+    assert iso["after"]["phase"] == CAPTURE_PHASE_POST_ACTION
+    assert resolve_identity_anchor(after, before) is None

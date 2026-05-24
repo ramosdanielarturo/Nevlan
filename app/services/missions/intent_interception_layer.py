@@ -62,6 +62,10 @@ from app.services.missions.candidate_fusion_engine import (
     FusionResult,
 )
 from app.services.missions.recorder_capture_contract import (
+    ANCHOR_SOURCE_INTENT_LAYER,
+    ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
+    CAPTURE_PHASE_POST_ACTION,
+    CAPTURE_PHASE_PRE_CLICK,
     PostActionScheduler,
     PostActionState,
     PreActionSnapshot,
@@ -69,6 +73,7 @@ from app.services.missions.recorder_capture_contract import (
     TargetAnchor,
     capture_target_anchor,
     enforce_target_identity_isolation,
+    resolve_identity_anchor,
 )
 from app.services.missions.target_identity import (
     Ambiguity,
@@ -314,7 +319,12 @@ class IntentInterceptionLayer:
         """
         now = int(self.clock_ms())
         win_ctx = self._safe_call(self.window_ctx_probe, default={}) or {}
-        before = capture_target_anchor(win_ctx, clock_ms=lambda: now)
+        before = capture_target_anchor(
+            win_ctx,
+            phase=CAPTURE_PHASE_PRE_CLICK,
+            source=ANCHOR_SOURCE_INTENT_LAYER,
+            clock_ms=lambda: now,
+        )
         pre_snap = None
         if self.pre_buffer is not None:
             try:
@@ -451,7 +461,10 @@ class IntentInterceptionLayer:
         # 5. Outcome: anchor after + post_action_state.
         after_state = self._safe_call(self.state_probe, default={}) or {}
         after_anchor = capture_target_anchor(
-            after_state, clock_ms=lambda: int(self.clock_ms())
+            after_state,
+            phase=CAPTURE_PHASE_POST_ACTION,
+            source=ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
+            clock_ms=lambda: int(self.clock_ms()),
         )
         intercepted.after_anchor = after_anchor
 
