@@ -6,6 +6,8 @@ from app.services.missions.recorder_capture_contract import (
     CAPTURE_PHASE_PRE_CLICK,
     ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
     TargetAnchor,
+    aggregate_precapture_metrics,
+    attach_precapture_diagnostics,
     capture_target_anchor,
     is_identity_anchor,
     resolve_identity_anchor,
@@ -68,3 +70,29 @@ def test_after_anchor_never_used_for_identity() -> None:
 def test_post_action_phase_default_on_capture() -> None:
     anchor = capture_target_anchor({"hwnd": 5, "title": "T", "process_name": "x.exe"})
     assert anchor.phase == CAPTURE_PHASE_POST_ACTION
+
+
+def test_aggregate_precapture_metrics_serializes_report_fields() -> None:
+    diags = [
+        {"preclick_captured": True, "target_precapture_weak": False},
+        {"preclick_captured": True, "target_precapture_weak": False},
+        {"preclick_captured": False, "target_precapture_weak": True, "missing_reason": "TARGET_PRECAPTURE_MISSING"},
+    ]
+    report = aggregate_precapture_metrics(diags)
+    assert report["click_count"] == 3
+    assert report["preclick_missing_count"] == 1
+    assert report["target_precapture_weak_count"] == 1
+    assert abs(report["preclick_capture_rate"] - (2 / 3)) < 0.001
+
+
+def test_attach_precapture_diagnostics_marks_weak_without_pending() -> None:
+    meta: dict = {}
+    anchor = capture_target_anchor(
+        {"hwnd": 1, "title": "A", "process_name": "a.exe"},
+        phase=CAPTURE_PHASE_PRE_CLICK,
+        source=ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
+    )
+    attach_precapture_diagnostics(meta, before_anchor=anchor, had_pending=False)
+    assert meta["precapture_diagnostics"]["target_precapture_weak"] is True
+    attach_precapture_diagnostics(meta, before_anchor=anchor, had_pending=True)
+    assert meta["precapture_diagnostics"]["preclick_captured"] is True

@@ -58,7 +58,7 @@ from collections import deque
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable, Deque, Dict, List, Optional, Tuple
+from typing import Any, Callable, Deque, Dict, List, Mapping, Optional, Sequence, Tuple
 
 
 # ──────────────────────────────────────────────────────────────────────
@@ -1409,6 +1409,51 @@ def apply_capture_contract_to_metadata(
     return metadata
 
 
+def attach_precapture_diagnostics(
+    metadata: Dict[str, Any],
+    *,
+    before_anchor: Optional[TargetAnchor],
+    had_pending: bool,
+    missing_reason: str = "",
+) -> Dict[str, Any]:
+    """Telemetría por click: éxito/fallo de pre-click mousedown."""
+    diag = dict(metadata.get("precapture_diagnostics") or {})
+    preclick_ok = bool(had_pending and is_identity_anchor(before_anchor))
+    weak = not preclick_ok
+    diag.update({
+        "preclick_captured": preclick_ok,
+        "had_pending_mousedown": bool(had_pending),
+        "target_precapture_weak": weak,
+        "missing_reason": (missing_reason or None) if weak else None,
+        "before_anchor_phase": str(getattr(before_anchor, "phase", "") or ""),
+        "before_anchor_source": str(getattr(before_anchor, "source", "") or ""),
+    })
+    metadata["precapture_diagnostics"] = diag
+    return metadata
+
+
+def aggregate_precapture_metrics(
+    diagnostics: Sequence[Mapping[str, Any]],
+) -> Dict[str, Any]:
+    """Agrega métricas de sesión para reportes JSON."""
+    total = len(diagnostics)
+    if total == 0:
+        return {
+            "preclick_capture_rate": 1.0,
+            "preclick_missing_count": 0,
+            "target_precapture_weak_count": 0,
+            "click_count": 0,
+        }
+    captured = sum(1 for d in diagnostics if d.get("preclick_captured"))
+    weak = sum(1 for d in diagnostics if d.get("target_precapture_weak"))
+    return {
+        "preclick_capture_rate": round(captured / total, 4),
+        "preclick_missing_count": weak,
+        "target_precapture_weak_count": weak,
+        "click_count": total,
+    }
+
+
 __all__ = [
     "PreActionSnapshot",
     "PostActionState",
@@ -1432,6 +1477,8 @@ __all__ = [
     "ANCHOR_SOURCE_INTENT_LAYER",
     "is_identity_anchor",
     "resolve_identity_anchor",
+    "attach_precapture_diagnostics",
+    "aggregate_precapture_metrics",
     "DEFAULT_BUFFER_CAPACITY",
     "DEFAULT_BUFFER_PERIOD_MS",
     "DEFAULT_PRE_SNAPSHOT_MAX_AGE_MS",
