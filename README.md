@@ -19,15 +19,38 @@ The system is built on a modular architecture where different "Roles" (Agents) h
 ## Getting Started
 
 ### Prerequisites
-- Python 3.10+
-- Chrome Browser (for browser automation tasks)
-- Valid API Keys (configured in `.env`)
+- Python 3.10+ (3.11 recommended for CI parity)
+- Chrome Browser (for live browser automation)
+- API keys only if you use cloud LLM features (configure in `.env`, never commit secrets)
 
 ### Installation
-1.  Clone the repository.
-2.  Install dependencies: `pip install -r requirements.txt`
-3.  Configure `.env` using `.env.example`.
-4.  Run the system: `python main.py`
+
+Dependencies live in `pyproject.toml` (single source of truth). There is no `requirements.txt`.
+
+**CI / local minimum** (Ubuntu gate, headless tests):
+
+```bash
+python -m pip install -U pip setuptools wheel
+pip install -e ".[ci]"
+pytest tests/unit/test_fase7_release_benchmark.py -q
+python scripts/validate_fase7_certified_release.py
+```
+
+**Desktop** (UI, voice, browser automation — not for CI):
+
+```bash
+pip install -e ".[desktop]"
+playwright install chromium   # once
+```
+
+**Full dev on Windows** (CI + desktop + Windows hooks + optional LLM):
+
+```bash
+pip install -e ".[ci,desktop,windows,llm]"
+playwright install chromium
+```
+
+Configure `.env` from `.env.example`, then run: `python main.py`
 
 ## Documentation
 - [Lecciones Aprendidas](LECCIONES_APRENDIDAS.md): The system's long-term memory.
