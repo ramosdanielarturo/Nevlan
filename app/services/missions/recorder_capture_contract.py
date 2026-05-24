@@ -871,12 +871,18 @@ def enforce_target_identity_isolation(
 
     Retorna el mismo ``metadata`` (mutado).
     """
+    identity_before = resolve_identity_anchor(before, after)
     flags = detect_state_change(before, after)
     contaminated_keys: List[str] = []
     after_block = dict(metadata.get("debug_after_state") or {})
 
+    if before is not None and identity_before is None:
+        degradation_reason = "identity_anchor_not_pre_click"
+    else:
+        degradation_reason = ""
+
     trust_rep = compute_trusted_pre_action_identity(
-        metadata, before=before, click_xy=click_xy,
+        metadata, before=identity_before, click_xy=click_xy,
     )
     trusted = bool(trust_rep.get("trusted_pre_action_identity"))
     window_dirty = (
@@ -886,18 +892,19 @@ def enforce_target_identity_isolation(
         trusted and window_dirty and flags["any_changed"]
     )
     identity_preserved_after_transition = False
-    degradation_reason = ""
 
     # Cambio de ventana / título / app ⇒ UIA + bbox serían post-action
     # salvo que la identidad PRE-click sea explícitamente confiable.
     if window_dirty:
         if trusted:
             identity_preserved_after_transition = True
-            degradation_reason = ""
+            if degradation_reason != "identity_anchor_not_pre_click":
+                degradation_reason = ""
         else:
-            degradation_reason = (
-                "window_transition_without_trusted_pre_action_identity"
-            )
+            if degradation_reason != "identity_anchor_not_pre_click":
+                degradation_reason = (
+                    "window_transition_without_trusted_pre_action_identity"
+                )
             if metadata.get("uia"):
                 after_block["uia_after"] = metadata.pop("uia")
                 contaminated_keys.append("uia")
@@ -926,6 +933,11 @@ def enforce_target_identity_isolation(
     metadata["target_identity_isolation"] = {
         "before": before.to_dict() if before is not None else None,
         "after": after.to_dict() if after is not None else None,
+        "identity_before": (
+            resolve_identity_anchor(before, after).to_dict()
+            if resolve_identity_anchor(before, after) is not None
+            else None
+        ),
         "state_change": flags,
         "moved_to_debug_after_state": contaminated_keys,
         "contaminated": bool(contaminated_keys),
