@@ -1,0 +1,2003 @@
+{
+  "id": "c77ce517-994e-4095-852d-a98dafd3b6c1",
+  "name": "mission_1778297133",
+  "version": 1,
+  "schema_version": "2.0",
+  "created_at": "2026-05-09T03:25:33.045865Z",
+  "updated_at": "2026-05-09T03:25:33.045865Z",
+  "status": "draft",
+  "raw_trace": [
+    {
+      "id": "9ef971e2-3dde-470c-ac58-8b3d649062d4",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:35.164854Z",
+      "sequence_id": 824,
+      "offset_ms": 2957,
+      "delay_until_next_ms": 6286,
+      "mouse_action": {
+        "x": 617,
+        "y": 2085,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 131332,
+        "title": null,
+        "process_name": "explorer.exe",
+        "bounding_box": {
+          "left": 0,
+          "top": 2040,
+          "width": 3840,
+          "height": 120
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_4a63e621_small.png",
+      "metadata": {
+        "uia": {
+          "name": "Escribe aquí para buscar.",
+          "control_type": "ButtonControl",
+          "automation_id": "4101",
+          "class_name": "Button",
+          "rect": "(144,2040,1176,2160)[1032x120]",
+          "bbox": {
+            "left": 144,
+            "top": 2040,
+            "width": 1032,
+            "height": 120
+          }
+        },
+        "target_bbox": {
+          "left": 577,
+          "top": 2045,
+          "width": 80,
+          "height": 80
+        },
+        "asset_bbox": {
+          "left": 537,
+          "top": 2040,
+          "width": 160,
+          "height": 120
+        },
+        "click_xy": [
+          617,
+          2085
+        ],
+        "click_offset_px": {
+          "dx": 0,
+          "dy": 0
+        },
+        "click_offset_ratio": {
+          "fx": 0.5,
+          "fy": 0.5
+        },
+        "target_source": "click_fallback",
+        "quality_level": "low",
+        "needs_reinforcement": true,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": 0,
+          "top": 2040,
+          "width": 3840,
+          "height": 120
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\9ef971e2-3dde-470c-ac58-8b3d649062d4_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\9ef971e2-3dde-470c-ac58-8b3d649062d4_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "Escribe aquí para buscar.",
+            "automation_id": "4101",
+            "control_type": "ButtonControl",
+            "class_name": "Button",
+            "bbox": {
+              "left": 144,
+              "top": 2040,
+              "width": 1032,
+              "height": 120
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\9ef971e2-3dde-470c-ac58-8b3d649062d4_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 617,
+              "y": 2085
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 144,
+              "top": 2040,
+              "width": 1032,
+              "height": 120
+            },
+            "click_offset_in_bbox": null,
+            "click_offset_ratio_in_element": null,
+            "element_layout_in_window": {
+              "center_fx_win": 0.1719,
+              "center_fy_win": 0.5,
+              "area_ratio": 0.26875
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:36.003699+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 131332,
+            "title": null,
+            "process_name": "explorer.exe",
+            "window_bbox": {
+              "left": 0,
+              "top": 2040,
+              "width": 3840,
+              "height": 120
+            }
+          },
+          "confidence": {
+            "confidence_score": 65.0,
+            "confidence_reasons": [
+              "uia.automation_id",
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops"
+            ],
+            "target_quality": "yellow"
+          }
+        },
+        "rel_win": {
+          "fx": 0.160677,
+          "fy": 0.375
+        },
+        "processed_timestamp": "2026-05-09T03:25:36.003699+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "863401db-57c0-45da-8f99-2d0dc5ac1c72",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:41.359854Z",
+      "sequence_id": 831,
+      "offset_ms": 9244,
+      "delay_until_next_ms": 3586,
+      "mouse_action": {
+        "x": 591,
+        "y": 651,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 66080,
+        "title": "Búsqueda",
+        "process_name": "SearchUI.exe",
+        "bounding_box": {
+          "left": 0,
+          "top": 267,
+          "width": 2529,
+          "height": 1893
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_3e90962a_small.png",
+      "metadata": {
+        "uia": {
+          "name": "Google Chrome, Aplicación de escritorio, Pulsa la flecha derecha para cambiar la vista previa",
+          "control_type": "ListItemControl",
+          "automation_id": "id_1145",
+          "class_name": "",
+          "rect": "(144,552,1176,744)[1032x192]",
+          "bbox": {
+            "left": 144,
+            "top": 552,
+            "width": 1032,
+            "height": 192
+          }
+        },
+        "anchor_bbox": {
+          "left": 144,
+          "top": 552,
+          "width": 1032,
+          "height": 192
+        },
+        "click_offset": {
+          "dx": -69,
+          "dy": 3
+        },
+        "target_bbox": {
+          "left": 144,
+          "top": 552,
+          "width": 1032,
+          "height": 192
+        },
+        "asset_bbox": {
+          "left": 0,
+          "top": 392,
+          "width": 1336,
+          "height": 512
+        },
+        "click_xy": [
+          591,
+          651
+        ],
+        "click_offset_px": {
+          "dx": -69,
+          "dy": 3
+        },
+        "click_offset_ratio": {
+          "fx": 0.4331,
+          "fy": 0.5156
+        },
+        "target_source": "uia",
+        "quality_level": "high",
+        "needs_reinforcement": false,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": 0,
+          "top": 267,
+          "width": 2529,
+          "height": 1893
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\7f39b760-0e83-431f-841e-6cc529f2527d_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\7f39b760-0e83-431f-841e-6cc529f2527d_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "Google Chrome, Aplicación de escritorio, Pulsa la flecha derecha para cambiar la vista previa",
+            "automation_id": "id_1145",
+            "control_type": "ListItemControl",
+            "class_name": "",
+            "bbox": {
+              "left": 144,
+              "top": 552,
+              "width": 1032,
+              "height": 192
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\7f39b760-0e83-431f-841e-6cc529f2527d_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 591,
+              "y": 651
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 144,
+              "top": 552,
+              "width": 1032,
+              "height": 192
+            },
+            "click_offset_in_bbox": {
+              "dx": -69,
+              "dy": 3
+            },
+            "click_offset_ratio_in_element": {
+              "dx_frac_elem": -0.0669,
+              "dy_frac_elem": 0.0156
+            },
+            "element_layout_in_window": {
+              "center_fx_win": 0.261,
+              "center_fy_win": 0.2013,
+              "area_ratio": 0.04139
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:42.282891+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 66080,
+            "title": "Búsqueda",
+            "process_name": "SearchUI.exe",
+            "window_bbox": {
+              "left": 0,
+              "top": 267,
+              "width": 2529,
+              "height": 1893
+            }
+          },
+          "confidence": {
+            "confidence_score": 65.0,
+            "confidence_reasons": [
+              "uia.automation_id",
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops",
+              "click_offset_within_element"
+            ],
+            "target_quality": "yellow"
+          },
+          "layout": {
+            "window_bbox": {
+              "left": 0,
+              "top": 267,
+              "width": 2529,
+              "height": 1893
+            },
+            "target_bbox": {
+              "left": 144,
+              "top": 552,
+              "width": 1032,
+              "height": 192
+            },
+            "element_layout_in_window": {
+              "left_ratio": 0.05693950177935943,
+              "top_ratio": 0.15055467511885895,
+              "width_ratio": 0.4080664294187426,
+              "height_ratio": 0.10142630744849446
+            },
+            "resolution_strategy": [
+              "uia_dom",
+              "ocr_text",
+              "vision_normalized",
+              "relative_coords",
+              "absolute_emergency"
+            ]
+          }
+        },
+        "rel_win": {
+          "fx": 0.233689,
+          "fy": 0.202853
+        },
+        "processed_timestamp": "2026-05-09T03:25:42.282891+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "2a6bb8df-8320-4643-ac93-95cdc22e5e78",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T03:25:42.288891Z",
+      "sequence_id": 832,
+      "offset_ms": 9243,
+      "delay_until_next_ms": 1,
+      "mouse_action": null,
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 66080,
+        "title": "Búsqueda",
+        "process_name": "SearchUI.exe",
+        "bounding_box": {
+          "left": 0,
+          "top": 267,
+          "width": 2529,
+          "height": 1893
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "field_session": true,
+        "final_text": "chrome",
+        "field_label": "",
+        "committed_read_source": "reconstructed_keyboard_url_sanitized",
+        "initial_value_snapshot": "c",
+        "field_commit": {
+          "user_typed_text": "chrome",
+          "final_field_value": "chrome://profile-picker/",
+          "source_is_url": false,
+          "source_is_app_state": false,
+          "source_is_input_value": false,
+          "chosen_final_text": "chrome",
+          "reason": "url_internal_overridden_by_buffer"
+        }
+      }
+    },
+    {
+      "id": "25d3752b-d611-4a58-b343-b91cff31d07b",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:43.962395Z",
+      "sequence_id": 833,
+      "offset_ms": 12830,
+      "delay_until_next_ms": 2359,
+      "mouse_action": {
+        "x": 1658,
+        "y": 1131,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 32900822,
+        "title": "Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": 330,
+          "top": 0,
+          "width": 3180,
+          "height": 2040
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_0ffb3bc9_small.png",
+      "metadata": {
+        "uia": {
+          "name": "Abrir el perfil de Daniel Chrome",
+          "control_type": "ButtonControl",
+          "automation_id": "profileCardButton",
+          "class_name": "",
+          "rect": "(1404,865,1890,1399)[486x534]",
+          "bbox": {
+            "left": 1404,
+            "top": 865,
+            "width": 486,
+            "height": 534
+          }
+        },
+        "anchor_bbox": {
+          "left": 1404,
+          "top": 865,
+          "width": 486,
+          "height": 534
+        },
+        "click_offset": {
+          "dx": 11,
+          "dy": -1
+        },
+        "target_bbox": {
+          "left": 1404,
+          "top": 865,
+          "width": 486,
+          "height": 534
+        },
+        "asset_bbox": {
+          "left": 1298,
+          "top": 759,
+          "width": 698,
+          "height": 746
+        },
+        "click_xy": [
+          1658,
+          1131
+        ],
+        "click_offset_px": {
+          "dx": 11,
+          "dy": -1
+        },
+        "click_offset_ratio": {
+          "fx": 0.5226,
+          "fy": 0.4981
+        },
+        "target_source": "uia",
+        "quality_level": "high",
+        "needs_reinforcement": false,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": 330,
+          "top": 0,
+          "width": 3180,
+          "height": 2040
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\681ceb7c-5b77-403b-b203-d277f790a244_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\681ceb7c-5b77-403b-b203-d277f790a244_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "Abrir el perfil de Daniel Chrome",
+            "automation_id": "profileCardButton",
+            "control_type": "ButtonControl",
+            "class_name": "",
+            "bbox": {
+              "left": 1404,
+              "top": 865,
+              "width": 486,
+              "height": 534
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\681ceb7c-5b77-403b-b203-d277f790a244_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 1658,
+              "y": 1131
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 1404,
+              "top": 865,
+              "width": 486,
+              "height": 534
+            },
+            "click_offset_in_bbox": {
+              "dx": 11,
+              "dy": -1
+            },
+            "click_offset_ratio_in_element": {
+              "dx_frac_elem": 0.0226,
+              "dy_frac_elem": -0.0019
+            },
+            "element_layout_in_window": {
+              "center_fx_win": 0.4142,
+              "center_fy_win": 0.5549,
+              "area_ratio": 0.04001
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:45.874948+00:00",
+            "dpi_scale": 1.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 32900822,
+            "title": "Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": 330,
+              "top": 0,
+              "width": 3180,
+              "height": 2040
+            }
+          },
+          "confidence": {
+            "confidence_score": 65.0,
+            "confidence_reasons": [
+              "uia.automation_id",
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops",
+              "click_offset_within_element"
+            ],
+            "target_quality": "yellow"
+          },
+          "layout": {
+            "window_bbox": {
+              "left": 330,
+              "top": 0,
+              "width": 3180,
+              "height": 2040
+            },
+            "target_bbox": {
+              "left": 1404,
+              "top": 865,
+              "width": 486,
+              "height": 534
+            },
+            "element_layout_in_window": {
+              "left_ratio": 0.33773584905660375,
+              "top_ratio": 0.42401960784313725,
+              "width_ratio": 0.15283018867924528,
+              "height_ratio": 0.26176470588235295
+            },
+            "resolution_strategy": [
+              "uia_dom",
+              "ocr_text",
+              "vision_normalized",
+              "relative_coords",
+              "absolute_emergency"
+            ]
+          }
+        },
+        "rel_win": {
+          "fx": 0.41761,
+          "fy": 0.554412
+        },
+        "processed_timestamp": "2026-05-09T03:25:45.875947+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "dc67dfcb-95ac-472c-a29b-714443706fec",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:46.370586Z",
+      "sequence_id": 834,
+      "offset_ms": 15189,
+      "delay_until_next_ms": 1452,
+      "mouse_action": {
+        "x": 3220,
+        "y": 50,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "Saneamiento de pipeline RPA - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_44f53645_small.png",
+      "metadata": {
+        "uia": {
+          "name": "Nueva pestaña",
+          "control_type": "ButtonControl",
+          "automation_id": "",
+          "class_name": "TabStripControlButton",
+          "rect": "(3183,0,3267,123)[84x123]",
+          "bbox": {
+            "left": 3183,
+            "top": 0,
+            "width": 84,
+            "height": 123
+          }
+        },
+        "anchor_bbox": {
+          "left": 3183,
+          "top": 0,
+          "width": 84,
+          "height": 123
+        },
+        "click_offset": {
+          "dx": -5,
+          "dy": -11
+        },
+        "target_bbox": {
+          "left": 3183,
+          "top": 0,
+          "width": 84,
+          "height": 123
+        },
+        "asset_bbox": {
+          "left": 3143,
+          "top": 0,
+          "width": 164,
+          "height": 163
+        },
+        "click_xy": [
+          3220,
+          50
+        ],
+        "click_offset_px": {
+          "dx": -5,
+          "dy": -11
+        },
+        "click_offset_ratio": {
+          "fx": 0.4405,
+          "fy": 0.4065
+        },
+        "target_source": "uia",
+        "quality_level": "high",
+        "needs_reinforcement": false,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\35e5b13d-42fe-4431-95f9-36cf491b8405_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\35e5b13d-42fe-4431-95f9-36cf491b8405_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "Nueva pestaña",
+            "automation_id": "",
+            "control_type": "ButtonControl",
+            "class_name": "TabStripControlButton",
+            "bbox": {
+              "left": 3183,
+              "top": 0,
+              "width": 84,
+              "height": 123
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\35e5b13d-42fe-4431-95f9-36cf491b8405_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 3220,
+              "y": 50
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 3183,
+              "top": 0,
+              "width": 84,
+              "height": 123
+            },
+            "click_offset_in_bbox": {
+              "dx": -5,
+              "dy": -11
+            },
+            "click_offset_ratio_in_element": {
+              "dx_frac_elem": -0.0595,
+              "dy_frac_elem": -0.0894
+            },
+            "element_layout_in_window": {
+              "center_fx_win": 0.8367,
+              "center_fy_win": 0.0383,
+              "area_ratio": 0.00128
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:48.234906+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 3277726,
+            "title": "Saneamiento de pipeline RPA - Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            }
+          },
+          "confidence": {
+            "confidence_score": 50.0,
+            "confidence_reasons": [
+              "uia.name",
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops",
+              "click_offset_within_element"
+            ],
+            "target_quality": "yellow"
+          },
+          "layout": {
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            },
+            "target_bbox": {
+              "left": 3183,
+              "top": 0,
+              "width": 84,
+              "height": 123
+            },
+            "element_layout_in_window": {
+              "left_ratio": 0.8258513931888545,
+              "top_ratio": 0.008670520231213872,
+              "width_ratio": 0.021671826625386997,
+              "height_ratio": 0.059248554913294796
+            },
+            "resolution_strategy": [
+              "uia_dom",
+              "ocr_text",
+              "vision_normalized",
+              "relative_coords",
+              "absolute_emergency"
+            ]
+          }
+        },
+        "rel_win": {
+          "fx": 0.835397,
+          "fy": 0.032755
+        },
+        "processed_timestamp": "2026-05-09T03:25:48.234906+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "56d65550-33ee-468a-9a3d-3319e1907bfb",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:47.619760Z",
+      "sequence_id": 835,
+      "offset_ms": 16642,
+      "delay_until_next_ms": 5967,
+      "mouse_action": {
+        "x": 1468,
+        "y": 221,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_a4688214_small.png",
+      "metadata": {
+        "uia": {
+          "name": "",
+          "control_type": "PaneControl",
+          "automation_id": "",
+          "class_name": "TopBackgroundView",
+          "rect": "(360,138,2913,240)[2553x102]",
+          "bbox": {
+            "left": 360,
+            "top": 138,
+            "width": 2553,
+            "height": 102
+          }
+        },
+        "target_bbox": {
+          "left": 1428,
+          "top": 181,
+          "width": 80,
+          "height": 80
+        },
+        "asset_bbox": {
+          "left": 1388,
+          "top": 141,
+          "width": 160,
+          "height": 160
+        },
+        "click_xy": [
+          1468,
+          221
+        ],
+        "click_offset_px": {
+          "dx": 0,
+          "dy": 0
+        },
+        "click_offset_ratio": {
+          "fx": 0.5,
+          "fy": 0.5
+        },
+        "target_source": "click_fallback",
+        "quality_level": "low",
+        "needs_reinforcement": true,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\56d65550-33ee-468a-9a3d-3319e1907bfb_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\56d65550-33ee-468a-9a3d-3319e1907bfb_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "",
+            "automation_id": "",
+            "control_type": "PaneControl",
+            "class_name": "TopBackgroundView",
+            "bbox": {
+              "left": 360,
+              "top": 138,
+              "width": 2553,
+              "height": 102
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\56d65550-33ee-468a-9a3d-3319e1907bfb_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 1468,
+              "y": 221
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 360,
+              "top": 138,
+              "width": 2553,
+              "height": 102
+            },
+            "click_offset_in_bbox": null,
+            "click_offset_ratio_in_element": null,
+            "element_layout_in_window": {
+              "center_fx_win": 0.4269,
+              "center_fy_win": 0.0997,
+              "area_ratio": 0.03236
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:49.683090+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 3277726,
+            "title": "Nueva pestaña - Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            }
+          },
+          "confidence": {
+            "confidence_score": 25.0,
+            "confidence_reasons": [
+              "uia.bounding_box",
+              "vision.crops"
+            ],
+            "target_quality": "red"
+          }
+        },
+        "rel_win": {
+          "fx": 0.383385,
+          "fy": 0.115125
+        },
+        "processed_timestamp": "2026-05-09T03:25:49.683090+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "d0c2ce2e-f310-4b2e-8a73-5ccd575d8c8b",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T03:25:49.687091Z",
+      "sequence_id": 842,
+      "offset_ms": 16641,
+      "delay_until_next_ms": 1,
+      "mouse_action": null,
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "field_session": true,
+        "final_text": "chrome",
+        "field_label": "",
+        "committed_read_source": "reconstructed_keyboard_url_sanitized",
+        "initial_value_snapshot": "cinemex.com",
+        "field_commit": {
+          "user_typed_text": "chrome",
+          "final_field_value": "chrome://newtab",
+          "source_is_url": false,
+          "source_is_app_state": false,
+          "source_is_input_value": false,
+          "chosen_final_text": "chrome",
+          "reason": "url_internal_overridden_by_buffer"
+        }
+      }
+    },
+    {
+      "id": "3fd25036-d449-4b15-b504-7ccadf6d342d",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:53.765977Z",
+      "sequence_id": 843,
+      "offset_ms": 22609,
+      "delay_until_next_ms": 2458,
+      "mouse_action": {
+        "x": 160,
+        "y": 503,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_b83e7f6c_small.png",
+      "metadata": {
+        "uia": {
+          "name": "",
+          "control_type": "TextControl",
+          "automation_id": "",
+          "class_name": "gb_yd",
+          "rect": "(72,390,3036,534)[2964x144]",
+          "bbox": {
+            "left": 72,
+            "top": 390,
+            "width": 2964,
+            "height": 144
+          }
+        },
+        "anchor_bbox": {
+          "left": 72,
+          "top": 390,
+          "width": 2964,
+          "height": 144
+        },
+        "click_offset": {
+          "dx": -1394,
+          "dy": 41
+        },
+        "target_bbox": {
+          "left": 72,
+          "top": 390,
+          "width": 2964,
+          "height": 144
+        },
+        "asset_bbox": {
+          "left": 0,
+          "top": 230,
+          "width": 3196,
+          "height": 464
+        },
+        "click_xy": [
+          160,
+          503
+        ],
+        "click_offset_px": {
+          "dx": -1394,
+          "dy": 41
+        },
+        "click_offset_ratio": {
+          "fx": 0.0297,
+          "fy": 0.7847
+        },
+        "target_source": "uia",
+        "quality_level": "high",
+        "needs_reinforcement": false,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3fd25036-d449-4b15-b504-7ccadf6d342d_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3fd25036-d449-4b15-b504-7ccadf6d342d_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "",
+            "automation_id": "",
+            "control_type": "TextControl",
+            "class_name": "gb_yd",
+            "bbox": {
+              "left": 72,
+              "top": 390,
+              "width": 2964,
+              "height": 144
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3fd25036-d449-4b15-b504-7ccadf6d342d_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 160,
+              "y": 503
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 72,
+              "top": 390,
+              "width": 2964,
+              "height": 144
+            },
+            "click_offset_in_bbox": {
+              "dx": -1394,
+              "dy": 41
+            },
+            "click_offset_ratio_in_element": {
+              "dx_frac_elem": -0.4703,
+              "dy_frac_elem": 0.2847
+            },
+            "element_layout_in_window": {
+              "center_fx_win": 0.4056,
+              "center_fy_win": 0.2312,
+              "area_ratio": 0.05304
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:55.655691+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 3277726,
+            "title": "Nueva pestaña - Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            }
+          },
+          "confidence": {
+            "confidence_score": 35.0,
+            "confidence_reasons": [
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops",
+              "click_offset_within_element"
+            ],
+            "target_quality": "red"
+          }
+        },
+        "rel_win": {
+          "fx": 0.045924,
+          "fy": 0.250963
+        },
+        "processed_timestamp": "2026-05-09T03:25:55.655691+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "fb805719-5e13-4bcf-91ce-bad6e87c36ce",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:25:56.247731Z",
+      "sequence_id": 844,
+      "offset_ms": 25067,
+      "delay_until_next_ms": 4479,
+      "mouse_action": {
+        "x": 516,
+        "y": 294,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_45215ca9_small.png",
+      "metadata": {
+        "uia": {
+          "name": "Youtube",
+          "control_type": "ButtonControl",
+          "automation_id": "view_1028",
+          "class_name": "BookmarkButton",
+          "rect": "(375,258,609,342)[234x84]",
+          "bbox": {
+            "left": 375,
+            "top": 258,
+            "width": 234,
+            "height": 84
+          }
+        },
+        "anchor_bbox": {
+          "left": 375,
+          "top": 258,
+          "width": 234,
+          "height": 84
+        },
+        "click_offset": {
+          "dx": 24,
+          "dy": -6
+        },
+        "target_bbox": {
+          "left": 375,
+          "top": 258,
+          "width": 234,
+          "height": 84
+        },
+        "asset_bbox": {
+          "left": 329,
+          "top": 212,
+          "width": 326,
+          "height": 176
+        },
+        "click_xy": [
+          516,
+          294
+        ],
+        "click_offset_px": {
+          "dx": 24,
+          "dy": -6
+        },
+        "click_offset_ratio": {
+          "fx": 0.6026,
+          "fy": 0.4286
+        },
+        "target_source": "uia",
+        "quality_level": "high",
+        "needs_reinforcement": false,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3af50b3d-4f15-4469-81bc-dc10d2a1ad1a_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3af50b3d-4f15-4469-81bc-dc10d2a1ad1a_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "Youtube",
+            "automation_id": "view_1028",
+            "control_type": "ButtonControl",
+            "class_name": "BookmarkButton",
+            "bbox": {
+              "left": 375,
+              "top": 258,
+              "width": 234,
+              "height": 84
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\3af50b3d-4f15-4469-81bc-dc10d2a1ad1a_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 516,
+              "y": 294
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 375,
+              "top": 258,
+              "width": 234,
+              "height": 84
+            },
+            "click_offset_in_bbox": {
+              "dx": 24,
+              "dy": -6
+            },
+            "click_offset_ratio_in_element": {
+              "dx_frac_elem": 0.1026,
+              "dy_frac_elem": -0.0714
+            },
+            "element_layout_in_window": {
+              "center_fx_win": 0.1316,
+              "center_fy_win": 0.1532,
+              "area_ratio": 0.00244
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:25:58.113023+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 3277726,
+            "title": "Nueva pestaña - Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            }
+          },
+          "confidence": {
+            "confidence_score": 65.0,
+            "confidence_reasons": [
+              "uia.automation_id",
+              "uia.control_type",
+              "uia.bounding_box",
+              "vision.crops",
+              "click_offset_within_element"
+            ],
+            "target_quality": "yellow"
+          },
+          "layout": {
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            },
+            "target_bbox": {
+              "left": 375,
+              "top": 258,
+              "width": 234,
+              "height": 84
+            },
+            "element_layout_in_window": {
+              "left_ratio": 0.10139318885448917,
+              "top_ratio": 0.1329479768786127,
+              "width_ratio": 0.06037151702786378,
+              "height_ratio": 0.04046242774566474
+            },
+            "resolution_strategy": [
+              "uia_dom",
+              "ocr_text",
+              "vision_normalized",
+              "relative_coords",
+              "absolute_emergency"
+            ]
+          }
+        },
+        "rel_win": {
+          "fx": 0.137771,
+          "fy": 0.150289
+        },
+        "processed_timestamp": "2026-05-09T03:25:58.113023+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "29d9334f-9b2e-4b8b-b297-b7d8444da5a5",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T03:26:00.516008Z",
+      "sequence_id": 845,
+      "offset_ms": 29547,
+      "delay_until_next_ms": 3500,
+      "mouse_action": {
+        "x": 1293,
+        "y": 436,
+        "button": "left"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\step_4c964790_small.png",
+      "metadata": {
+        "uia": {
+          "name": "",
+          "control_type": "GroupControl",
+          "automation_id": "guide-service",
+          "class_name": "style-scope ytd-app",
+          "rect": "(0,363,3795,14535)[3795x14172]",
+          "bbox": {
+            "left": 0,
+            "top": 363,
+            "width": 3795,
+            "height": 14172
+          }
+        },
+        "target_bbox": {
+          "left": 1253,
+          "top": 396,
+          "width": 80,
+          "height": 80
+        },
+        "asset_bbox": {
+          "left": 1213,
+          "top": 356,
+          "width": 160,
+          "height": 160
+        },
+        "click_xy": [
+          1293,
+          436
+        ],
+        "click_offset_px": {
+          "dx": 0,
+          "dy": 0
+        },
+        "click_offset_ratio": {
+          "fx": 0.5,
+          "fy": 0.5
+        },
+        "target_source": "click_fallback",
+        "quality_level": "low",
+        "needs_reinforcement": true,
+        "dpi_scale": 3.0,
+        "screen_size": [
+          3840,
+          2160
+        ],
+        "window_bbox": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        },
+        "snapshot_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\29d9334f-9b2e-4b8b-b297-b7d8444da5a5_mid.png",
+        "snapshot_full": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\29d9334f-9b2e-4b8b-b297-b7d8444da5a5_full.png",
+        "target_signature": {
+          "uia": {
+            "name": "",
+            "automation_id": "guide-service",
+            "control_type": "GroupControl",
+            "class_name": "style-scope ytd-app",
+            "bbox": {
+              "left": 0,
+              "top": 363,
+              "width": 3795,
+              "height": 14172
+            }
+          },
+          "text_context": {
+            "near_visible": null,
+            "ocr_anchor": null,
+            "associated_label": null,
+            "nearby_dom": null
+          },
+          "visual_assets": {
+            "ref_mid": "C:\\Users\\Daniel Ramos\\Desktop\\ArthurOS2\\ArthurOS\\var\\missions\\assets\\c77ce517-994e-4095-852d-a98dafd3b6c1\\29d9334f-9b2e-4b8b-b297-b7d8444da5a5_mid.png"
+          },
+          "coordinates": {
+            "absolute": {
+              "x": 1293,
+              "y": 436
+            },
+            "relative_window": null,
+            "bbox_element": {
+              "left": 0,
+              "top": 363,
+              "width": 3795,
+              "height": 14172
+            },
+            "click_offset_in_bbox": null,
+            "click_offset_ratio_in_element": null,
+            "element_layout_in_window": {
+              "center_fx_win": 0.4942,
+              "center_fy_win": 1.0,
+              "area_ratio": 6.68393
+            }
+          },
+          "capture_environment": {
+            "captured_at": "2026-05-09T03:26:02.589094+00:00",
+            "dpi_scale": 3.0,
+            "monitor_id": null,
+            "primary_screen_px": {
+              "w": 3840,
+              "h": 2160
+            },
+            "logical_screen_px": {
+              "w": 1280,
+              "h": 720
+            }
+          },
+          "image_sizes": {
+            "image_size_small_px": 100,
+            "image_size_mid_px": 600
+          },
+          "theme_hint": null,
+          "window_process": {
+            "hwnd": 3277726,
+            "title": "YouTube - Google Chrome",
+            "process_name": "chrome.exe",
+            "window_bbox": {
+              "left": -18,
+              "top": -18,
+              "width": 3876,
+              "height": 2076
+            }
+          },
+          "confidence": {
+            "confidence_score": 55.0,
+            "confidence_reasons": [
+              "uia.automation_id",
+              "uia.bounding_box",
+              "vision.crops"
+            ],
+            "target_quality": "yellow"
+          }
+        },
+        "rel_win": {
+          "fx": 0.338235,
+          "fy": 0.21869
+        },
+        "processed_timestamp": "2026-05-09T03:26:02.589094+00:00",
+        "listener_type": "mouse"
+      }
+    },
+    {
+      "id": "6d90cb30-f7b9-471f-8b1c-9ef3f175f140",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T03:26:02.592094Z",
+      "sequence_id": 854,
+      "offset_ms": 29546,
+      "delay_until_next_ms": 1,
+      "mouse_action": null,
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "field_session": true,
+        "final_text": "devuelve",
+        "field_label": "",
+        "committed_read_source": "uia",
+        "initial_value_snapshot": "",
+        "field_commit": {
+          "user_typed_text": "devuelve",
+          "final_field_value": "devuelve",
+          "source_is_url": false,
+          "source_is_app_state": false,
+          "source_is_input_value": true,
+          "chosen_final_text": "devuelve",
+          "reason": "value_read_via_uia"
+        }
+      }
+    },
+    {
+      "id": "961c1c90-487b-4c8e-b131-7d392f66fa95",
+      "event_type": "keyboard_key_press",
+      "timestamp": "2026-05-09T03:26:06.089277Z",
+      "sequence_id": 877,
+      "offset_ms": 33048,
+      "delay_until_next_ms": 3061,
+      "mouse_action": null,
+      "drag_action": null,
+      "keyboard_action": {
+        "keys": [
+          "enter"
+        ],
+        "modifiers": []
+      },
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "capslock_on": false,
+        "processed_timestamp": "2026-05-09T03:26:06.090278+00:00",
+        "listener_type": "keyboard"
+      }
+    },
+    {
+      "id": "a425cdc9-caed-452f-b424-af8d6fbd289e",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T03:26:06.093277Z",
+      "sequence_id": 878,
+      "offset_ms": 33047,
+      "delay_until_next_ms": 1,
+      "mouse_action": null,
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "field_session": true,
+        "final_text": "devuelveme el amor luis miguel",
+        "field_label": "",
+        "committed_read_source": "uia",
+        "initial_value_snapshot": "devuelve",
+        "field_commit": {
+          "user_typed_text": "me el amor luis miguel",
+          "final_field_value": "devuelveme el amor luis miguel",
+          "source_is_url": false,
+          "source_is_app_state": false,
+          "source_is_input_value": true,
+          "chosen_final_text": "devuelveme el amor luis miguel",
+          "reason": "value_read_via_uia"
+        }
+      }
+    },
+    {
+      "id": "351fbe3e-0ad5-426c-a9d3-cbddc1eb5d82",
+      "event_type": "mouse_scroll",
+      "timestamp": "2026-05-09T03:26:09.155648Z",
+      "sequence_id": 879,
+      "offset_ms": 36109,
+      "delay_until_next_ms": 619,
+      "mouse_action": {
+        "x": 2179,
+        "y": 1090,
+        "button": "scroll"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "devuelveme el amor luis miguel - YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "scroll": {
+          "dx": 0,
+          "dy": -1
+        },
+        "uia": {
+          "name": "",
+          "control_type": "GroupControl",
+          "automation_id": "",
+          "class_name": "ytLockupViewModelHost ytLockupViewModelHorizontal content-id-2qFMkSxzZq8 ytLockupViewModelRichGridLegacyMargin ytLockupViewModelFlexNone",
+          "rect": "(712,408,3731,1168)[3019x760]",
+          "bbox": {
+            "left": 712,
+            "top": 408,
+            "width": 3019,
+            "height": 760
+          }
+        },
+        "count": 1
+      }
+    },
+    {
+      "id": "8f6bd7fe-c803-4313-acbe-e8c31b922604",
+      "event_type": "mouse_scroll",
+      "timestamp": "2026-05-09T03:26:09.774466Z",
+      "sequence_id": 880,
+      "offset_ms": 36728,
+      "delay_until_next_ms": 0,
+      "mouse_action": {
+        "x": 2185,
+        "y": 1075,
+        "button": "scroll"
+      },
+      "drag_action": null,
+      "keyboard_action": null,
+      "window_context": {
+        "hwnd": 3277726,
+        "title": "devuelveme el amor luis miguel - YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {
+          "left": -18,
+          "top": -18,
+          "width": 3876,
+          "height": 2076
+        }
+      },
+      "file_operation": null,
+      "snapshot_ref": null,
+      "metadata": {
+        "scroll": {
+          "dx": 0,
+          "dy": -1
+        },
+        "uia": {
+          "name": "",
+          "control_type": "GroupControl",
+          "automation_id": "",
+          "class_name": "ytLockupViewModelHost ytLockupViewModelHorizontal content-id-2qFMkSxzZq8 ytLockupViewModelRichGridLegacyMargin ytLockupViewModelFlexNone",
+          "rect": "(712,108,3731,868)[3019x760]",
+          "bbox": {
+            "left": 712,
+            "top": 108,
+            "width": 3019,
+            "height": 760
+          }
+        },
+        "count": 1
+      }
+    }
+  ],
+  "user_annotations": [],
+  "interpreted_steps": [],
+  "compiled_execution_graph": [],
+  "semantic_execution_plan": {
+    "source": "intent_collapse_engine",
+    "version": 1,
+    "average_confidence": 0.912,
+    "coords_used": false,
+    "legacy_graph_ignored": true,
+    "intent_status": "READY",
+    "not_ready_reasons": [],
+    "ready_provenance": "raw_evidence",
+    "steps": [
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p00:open_app",
+        "type": "open_app",
+        "params": {
+          "name": "chrome",
+          "method": "windows_search"
+        },
+        "preferred_strategy": "open_app:windows_search",
+        "fallback_strategies": [
+          "open_app:os_startfile",
+          "open_app:start_command"
+        ],
+        "confidence": 0.92,
+        "human_label": "Abrir Chrome",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      },
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p01:select_profile",
+        "type": "select_profile",
+        "params": {
+          "profile_name": "Daniel Arturo Ramos",
+          "app": "chrome"
+        },
+        "preferred_strategy": "select_profile:uia_text_match",
+        "fallback_strategies": [
+          "select_profile:visible_text_ocr",
+          "select_profile:chrome_profile_alias",
+          "select_profile:skip_if_loaded"
+        ],
+        "confidence": 0.92,
+        "human_label": "Seleccionar perfil Daniel Arturo Ramos",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      },
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p02:open_new_tab",
+        "type": "open_new_tab",
+        "params": {
+          "app": "chrome"
+        },
+        "preferred_strategy": "open_new_tab:hotkey_ctrl_t",
+        "fallback_strategies": [
+          "open_new_tab:uia_button"
+        ],
+        "confidence": 0.9,
+        "human_label": "Abrir nueva pestaña",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      },
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p03:open_url",
+        "type": "open_url",
+        "params": {
+          "url": "youtube.com",
+          "alias": "youtube"
+        },
+        "preferred_strategy": "open_url:hotkey_ctrl_l",
+        "fallback_strategies": [
+          "open_url:playwright_goto",
+          "open_url:bookmark_uia"
+        ],
+        "confidence": 0.95,
+        "human_label": "Abrir YouTube",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      },
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p04:search_content",
+        "type": "search_content",
+        "params": {
+          "query": "devuelveme el amor luis miguel",
+          "site": "youtube",
+          "target": "youtube_search_box",
+          "query_fidelity_status": "ok",
+          "provider": "youtube"
+        },
+        "preferred_strategy": "search_content:smart_route",
+        "fallback_strategies": [
+          "search_site:smart_route",
+          "search_youtube:dom_input",
+          "search_youtube:dom_search_input",
+          "search_youtube:uia_searchbox",
+          "search_youtube:ocr_buscar",
+          "search_youtube:keyboard_focus_then_type"
+        ],
+        "confidence": 0.93,
+        "human_label": "Buscar en YouTube: devuelveme el amor luis miguel",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      },
+      {
+        "id": "c77ce517-994e-4095-852d-a98dafd3b6c1:p05:scroll_results",
+        "type": "scroll_results",
+        "params": {
+          "direction": "down",
+          "amount": 2,
+          "context": "youtube_results"
+        },
+        "preferred_strategy": "scroll_results:wheel",
+        "fallback_strategies": [
+          "scroll_results:keyboard",
+          "scroll_results:js_scrollby"
+        ],
+        "confidence": 0.85,
+        "human_label": "Bajar resultados",
+        "needs_user_label": false,
+        "label_prompt": "",
+        "block_id": null
+      }
+    ]
+  },
+  "legacy_compiled_graph_purpose": "legacy_debug_only",
+  "triggers": [],
+  "recovery_rules": {},
+  "validation_rules": {},
+  "policy": {
+    "ledger_enabled": true,
+    "auto_recoverable": true,
+    "notifications_enabled": false,
+    "requires_human_approval_on_fail": true
+  },
+  "description": "",
+  "tags": [],
+  "aliases": [],
+  "action_groups": [],
+  "review_confirmations": [],
+  "rerecord_history": []
+}

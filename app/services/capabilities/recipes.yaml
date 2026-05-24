@@ -1,0 +1,21 @@
+allowlist:
+  - name: playwright
+    pip_package: playwright
+    description: "Automatización de navegadores web"
+    post_install: ["playwright", "install"]
+    
+  - name: google-chrome
+    type: external
+    check_command: ["chrome", "--version"]
+    
+  - name: cv2
+    pip_package: opencv-python
+    description: "Visión por computador básica"
+
+  - name: pyautogui
+    pip_package: pyautogui
+    description: "Control de mouse y teclado"
+
+  - name: uiautomation
+    pip_package: uiautomation
+    description: "Control de ventanas Windows (UIA)"

@@ -1,0 +1,22 @@
+language: es
+
+mission_run_verbs:
+  - abre
+  - entra
+  - ve
+  - pon
+  - lanza
+  - inicia
+  - arranca
+  - ejecuta
+  - corre
+  - activa
+  - haz
+  - reproducir
+  - buscar
+
+mission_run_phrases:
+  - "abre mision"
+  - "ejecuta la mision"
+  - "iniciar mision"
+  - "correr proceso"

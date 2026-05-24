@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>simple_form FASE 7</title>
+</head>
+<body>
+  <h1>FASE 7 simple form</h1>
+  <form id="fase7-form" onsubmit="event.preventDefault(); document.getElementById('status').textContent='submitted';">
+    <p>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="name" />
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" />
+    </p>
+    <p>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </p>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="status" aria-live="polite"></p>
+</body>
+</html>

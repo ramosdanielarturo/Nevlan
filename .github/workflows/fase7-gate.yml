@@ -1,0 +1,28 @@
+name: FASE 7 Release Gate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  fase7-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: FASE 7 dry-run gate
+        run: make fase7-gate
+
+      - name: Validate certified live baseline
+        run: python scripts/validate_fase7_certified_release.py

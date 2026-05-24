@@ -1,0 +1,448 @@
+{
+  "id": "815bc407-795e-4ac9-a71c-fc778e28d70c",
+  "name": "mission_1778307670",
+  "version": 1,
+  "schema_version": "2.0",
+  "created_at": "2026-05-09T06:01:10.000000Z",
+  "updated_at": "2026-05-09T06:01:10.000000Z",
+  "status": "draft",
+  "raw_trace": [
+    {
+      "id": "ev01-winsearch-click",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T06:01:11.000000Z",
+      "sequence_id": 1,
+      "offset_ms": 1000,
+      "delay_until_next_ms": 400,
+      "mouse_action": {
+        "x": 600, "y": 2080, "button": "left"
+      },
+      "window_context": {
+        "hwnd": 100,
+        "title": "Búsqueda",
+        "process_name": "explorer.exe",
+        "bounding_box": {"left": 0, "top": 2040, "width": 3840, "height": 120}
+      },
+      "metadata": {
+        "uia_data": {
+          "name": "Escribe aquí para buscar.",
+          "control_type": "ButtonControl",
+          "automation_id": "4101",
+          "class_name": "Button"
+        }
+      }
+    },
+    {
+      "id": "ev02-winsearch-type",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T06:01:11.500000Z",
+      "sequence_id": 2,
+      "offset_ms": 1500,
+      "delay_until_next_ms": 600,
+      "keyboard_action": {"keys": ["c", "h", "r", "o", "m", "e"]},
+      "window_context": {
+        "hwnd": 200,
+        "title": "Búsqueda",
+        "process_name": "SearchHost.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "final_text": "chrome",
+        "field_commit": {
+          "user_typed_text": "chrome",
+          "final_field_value": "chrome",
+          "source_is_input_value": true,
+          "chosen_final_text": "chrome",
+          "reason": "user_typed"
+        },
+        "uia_data": {
+          "name": "Escribe aquí para buscar.",
+          "control_type": "EditControl",
+          "automation_id": "SearchTextBox"
+        }
+      }
+    },
+    {
+      "id": "ev03-chrome-result-click",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T06:01:12.300000Z",
+      "sequence_id": 3,
+      "offset_ms": 2300,
+      "delay_until_next_ms": 1200,
+      "mouse_action": {"x": 580, "y": 650, "button": "left"},
+      "window_context": {
+        "hwnd": 200,
+        "title": "Búsqueda",
+        "process_name": "SearchHost.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "uia_data": {
+          "name": "Google Chrome, Aplicación de escritorio",
+          "control_type": "ListItemControl",
+          "automation_id": "id_1319"
+        }
+      }
+    },
+    {
+      "id": "ev04-chrome-window-activate-picker",
+      "event_type": "window_activate",
+      "timestamp": "2026-05-09T06:01:13.500000Z",
+      "sequence_id": 4,
+      "offset_ms": 3500,
+      "delay_until_next_ms": 800,
+      "window_context": {
+        "hwnd": 300,
+        "title": "Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ev05-profile-picker-click",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T06:01:14.300000Z",
+      "sequence_id": 5,
+      "offset_ms": 4300,
+      "delay_until_next_ms": 1500,
+      "mouse_action": {"x": 800, "y": 540, "button": "left"},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "uia_data": {
+          "name": "",
+          "control_type": "GroupControl",
+          "automation_id": "",
+          "class_name": "GroupControl"
+        },
+        "vision_data": {
+          "ocr_text_around": "Daniel"
+        }
+      }
+    },
+    {
+      "id": "ev06-chrome-window-activate-profile",
+      "event_type": "window_activate",
+      "timestamp": "2026-05-09T06:01:15.800000Z",
+      "sequence_id": 6,
+      "offset_ms": 5800,
+      "delay_until_next_ms": 700,
+      "window_context": {
+        "hwnd": 300,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ev07-ctrl-t",
+      "event_type": "keyboard_hotkey",
+      "timestamp": "2026-05-09T06:01:16.500000Z",
+      "sequence_id": 7,
+      "offset_ms": 6500,
+      "delay_until_next_ms": 500,
+      "keyboard_action": {"keys": ["t"], "modifiers": ["ctrl"]},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ev08-type-youtube-url",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T06:01:17.000000Z",
+      "sequence_id": 8,
+      "offset_ms": 7000,
+      "delay_until_next_ms": 400,
+      "keyboard_action": {"keys": ["y", "o", "u", "t", "u", "b", "e", ".", "c", "o", "m"]},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "final_text": "youtube.com",
+        "field_commit": {
+          "user_typed_text": "youtube.com",
+          "final_field_value": "youtube.com",
+          "source_is_input_value": true,
+          "chosen_final_text": "youtube.com",
+          "reason": "address_bar"
+        },
+        "uia_data": {
+          "name": "Barra de direcciones y de búsqueda",
+          "automation_id": "OmniboxTextfield",
+          "control_type": "EditControl"
+        }
+      }
+    },
+    {
+      "id": "ev09-enter-url",
+      "event_type": "keyboard_key_press",
+      "timestamp": "2026-05-09T06:01:17.400000Z",
+      "sequence_id": 9,
+      "offset_ms": 7400,
+      "delay_until_next_ms": 1500,
+      "keyboard_action": {"keys": ["enter"]},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Nueva pestaña - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ev10-youtube-loaded",
+      "event_type": "window_activate",
+      "timestamp": "2026-05-09T06:01:18.900000Z",
+      "sequence_id": 10,
+      "offset_ms": 8900,
+      "delay_until_next_ms": 800,
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "web_data": {
+          "url": "https://www.youtube.com/"
+        }
+      }
+    },
+    {
+      "id": "ev11-youtube-search-click",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T06:01:19.700000Z",
+      "sequence_id": 11,
+      "offset_ms": 9700,
+      "delay_until_next_ms": 600,
+      "mouse_action": {"x": 960, "y": 100, "button": "left"},
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "web_data": {
+          "url": "https://www.youtube.com/",
+          "css_selector": "input#search",
+          "test_id": "youtube-search-input"
+        },
+        "uia_data": {
+          "name": "Buscar",
+          "automation_id": "search-input",
+          "control_type": "EditControl"
+        }
+      }
+    },
+    {
+      "id": "ev12-type-de",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T06:01:20.300000Z",
+      "sequence_id": 12,
+      "offset_ms": 10300,
+      "delay_until_next_ms": 250,
+      "keyboard_action": {"keys": ["d", "e"]},
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "final_text": "de",
+        "field_commit": {
+          "user_typed_text": "de",
+          "final_field_value": "de",
+          "source_is_input_value": true,
+          "chosen_final_text": "de",
+          "reason": "user_typed_youtube_search_fragment"
+        },
+        "field_session": {"id": "yt-session-A"},
+        "web_data": {
+          "url": "https://www.youtube.com/",
+          "css_selector": "input#search",
+          "test_id": "youtube-search-input"
+        },
+        "uia_data": {
+          "name": "Buscar",
+          "automation_id": "search-input",
+          "control_type": "EditControl"
+        }
+      }
+    },
+    {
+      "id": "ev13-refocus-click",
+      "event_type": "mouse_click",
+      "timestamp": "2026-05-09T06:01:20.550000Z",
+      "sequence_id": 13,
+      "offset_ms": 10550,
+      "delay_until_next_ms": 200,
+      "mouse_action": {"x": 960, "y": 100, "button": "left"},
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "web_data": {
+          "url": "https://www.youtube.com/",
+          "css_selector": "input#search",
+          "test_id": "youtube-search-input"
+        },
+        "uia_data": {
+          "name": "Buscar",
+          "automation_id": "search-input",
+          "control_type": "EditControl"
+        }
+      }
+    },
+    {
+      "id": "ev14-type-main-query",
+      "event_type": "keyboard_type_text",
+      "timestamp": "2026-05-09T06:01:20.750000Z",
+      "sequence_id": 14,
+      "offset_ms": 10750,
+      "delay_until_next_ms": 600,
+      "keyboard_action": {
+        "keys": ["D", "e", "v", "u", "e", "l", "v", "e", "m", "e", " ", "e", "l", " ", "a", "m", "o", "r", " ", "L", "u", "i", "s", " ", "M", "i", "g", "u", "e", "l"]
+      },
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "final_text": "Devuelveme el amor Luis Miguel",
+        "field_commit": {
+          "user_typed_text": "Devuelveme el amor Luis Miguel",
+          "final_field_value": "Devuelveme el amor Luis Miguel",
+          "source_is_input_value": true,
+          "chosen_final_text": "Devuelveme el amor Luis Miguel",
+          "reason": "user_typed_youtube_search"
+        },
+        "field_session": {"id": "yt-session-B"},
+        "web_data": {
+          "url": "https://www.youtube.com/",
+          "css_selector": "input#search",
+          "test_id": "youtube-search-input"
+        },
+        "uia_data": {
+          "name": "Buscar",
+          "automation_id": "search-input",
+          "control_type": "EditControl"
+        }
+      }
+    },
+    {
+      "id": "ev15-enter-search",
+      "event_type": "keyboard_key_press",
+      "timestamp": "2026-05-09T06:01:21.350000Z",
+      "sequence_id": 15,
+      "offset_ms": 11350,
+      "delay_until_next_ms": 1500,
+      "keyboard_action": {"keys": ["enter"]},
+      "window_context": {
+        "hwnd": 300,
+        "title": "YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {}
+    },
+    {
+      "id": "ev16-results-window",
+      "event_type": "window_activate",
+      "timestamp": "2026-05-09T06:01:22.850000Z",
+      "sequence_id": 16,
+      "offset_ms": 12850,
+      "delay_until_next_ms": 800,
+      "window_context": {
+        "hwnd": 300,
+        "title": "Devuelveme el amor Luis Miguel - YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "web_data": {
+          "url": "https://www.youtube.com/results?search_query=Devuelveme+el+amor+Luis+Miguel"
+        }
+      }
+    },
+    {
+      "id": "ev17-scroll-1",
+      "event_type": "mouse_scroll",
+      "timestamp": "2026-05-09T06:01:23.650000Z",
+      "sequence_id": 17,
+      "offset_ms": 13650,
+      "delay_until_next_ms": 400,
+      "mouse_action": {"x": 960, "y": 540, "button": "middle"},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Devuelveme el amor Luis Miguel - YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "count": 3,
+        "direction": "down",
+        "axis": "vertical"
+      }
+    },
+    {
+      "id": "ev18-scroll-2",
+      "event_type": "mouse_scroll",
+      "timestamp": "2026-05-09T06:01:24.050000Z",
+      "sequence_id": 18,
+      "offset_ms": 14050,
+      "delay_until_next_ms": 0,
+      "mouse_action": {"x": 960, "y": 540, "button": "middle"},
+      "window_context": {
+        "hwnd": 300,
+        "title": "Devuelveme el amor Luis Miguel - YouTube - Google Chrome",
+        "process_name": "chrome.exe",
+        "bounding_box": {"left": 0, "top": 0, "width": 1920, "height": 1080}
+      },
+      "metadata": {
+        "count": 2,
+        "direction": "down",
+        "axis": "vertical"
+      }
+    }
+  ],
+  "user_annotations": [],
+  "interpreted_steps": [],
+  "compiled_execution_graph": [],
+  "semantic_execution_plan": null,
+  "legacy_compiled_graph_purpose": "execution",
+  "triggers": [],
+  "recovery_rules": {},
+  "validation_rules": {},
+  "policy": {
+    "ledger_enabled": true,
+    "auto_recoverable": true,
+    "notifications_enabled": false,
+    "requires_human_approval_on_fail": true
+  },
+  "description": "Buscar canción de Luis Miguel en YouTube",
+  "tags": [],
+  "aliases": [],
+  "action_groups": [],
+  "review_confirmations": [],
+  "rerecord_history": []
+}

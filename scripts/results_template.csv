@@ -1,0 +1,8 @@
+app,caso,grabó_bien,agrupó_bien,ejecutó_bien,velocidad_vs_humano,pasos_debiles,reparaciones_necesarias,fallos,observaciones,versión,fecha,tester,score_global_0_a_3
+Chrome,Ctrl_L_buscar_resultado,,,,,,,,,,,,,
+Chrome,campo_web_texto,,,,,,,,,,,,,
+Notepad,escribir_backspace,,,,,,,,,,,,,
+Explorer,abrir_y_doble_click,,,,,,,,,,,,,
+Excel,celda_tab_guardar,,,,,,,,,,,,,
+Largo,50_pasos,,,,,,,,,,,,,
+Largo,200_pasos,,,,,,,,,,,,,

@@ -1,0 +1,42 @@
+---
+description: FASE 5 live — normalización inicial derivada del contrato de misión
+globs: app/services/runtime/fase5_*.py
+alwaysApply: false
+---
+
+# Normalización inicial (FASE 5 live)
+
+La normalización de entorno entre replays **debe derivarse del contrato de la misión**, no de supuestos fijos de app o sitio.
+
+## Derivar del contrato
+
+Antes de cada replay live, construir un plan desde la misión (`build_semantic_execution_plan` → `semantic_plan_to_mission_steps` → `build_contract` por paso) y extraer:
+
+1. **App requerida** — primer paso `open_app` → `process_names_for(params.name)`.
+2. **Contexto requerido** — pasos `select_profile` / `select_entity_from_collection` (pueden quedar ya satisfechos).
+3. **Pestañas/ventanas esperadas** — pasos barrera cuya postcondición debe ser **falsa** al inicio (p. ej. `open_new_tab`, `open_url`, `search_*`).
+4. **Estado inicial esperado** — evaluar postcondiciones de contrato sobre `StateSnapshot`; registrar `already_satisfied_step_ids`.
+5. **Pasos ya satisfechos** — setup (`open_app`, identidad) puede hacer skip; pasos barrera **no** deben estar satisfechos si eso cambia la ruta.
+
+## Prohibido
+
+- Hardcodear Chrome, YouTube, Google, perfiles concretos o URLs fijas de baseline.
+- Inventar un reset cuando no hay forma genérica de normalizar.
+
+## Baseline URL
+
+- Recolectar fragmentos de dominio/URL desde params de la misión (`resolve_url_alias`, `site`, `engine`, etc.).
+- Elegir URL neutral (`example.com`, `example.org`, …) que **no** satisfaga postcondiciones de pasos barrera.
+- Si no hay candidato válido → fallar.
+
+## Fallo explícito
+
+Si no se puede normalizar de forma genérica:
+
+- `failure_code = ENVIRONMENT_NOT_NORMALIZED`
+- `initial_state_normalized = false`
+- El gate FASE 5 debe rechazar (`environment_reset_failures > 0`).
+
+## Enfoque de app
+
+- Enfocar por `required_processes` del contrato (título/proceso), no por hints de marca o sitio.

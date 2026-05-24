@@ -1,0 +1,1699 @@
+{
+  "suite": "default",
+  "mode": "live",
+  "required_runs": 5,
+  "scenarios": [
+    {
+      "scenario_id": "chrome_youtube_launcher",
+      "category": "launcher·browser·search",
+      "description": "Chrome → perfil → pestaña → YouTube → búsqueda → scroll",
+      "mode": "live",
+      "required_runs": 5,
+      "runs": [
+        {
+          "run_index": 1,
+          "status": "success",
+          "duration_ms": 54595,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156-cd8c37d5",
+          "mission_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156",
+          "scenario_id": "chrome_youtube_launcher",
+          "weakest_step": {
+            "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+            "kind": "search_site",
+            "status": "success",
+            "strategy_used": "search_content:uol_surface",
+            "duration_ms": 22058,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1654
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p01:select_profile",
+              "kind": "select_profile",
+              "status": "skipped",
+              "strategy_used": "select_identity_context:already_satisfied",
+              "duration_ms": 1223
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p02:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7667
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p03:open_url",
+              "kind": "open_site",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 16664
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+              "kind": "search_site",
+              "status": "success",
+              "strategy_used": "search_content:uol_surface",
+              "duration_ms": 22058
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p05:scroll_results",
+              "kind": "scroll_results",
+              "status": "success",
+              "strategy_used": "browse_results:uol_scroll_surface",
+              "duration_ms": 4259
+            }
+          ],
+          "recorded_at": 1779645436.4318395
+        },
+        {
+          "run_index": 2,
+          "status": "success",
+          "duration_ms": 54361,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156-9208a0ad",
+          "mission_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156",
+          "scenario_id": "chrome_youtube_launcher",
+          "weakest_step": {
+            "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+            "kind": "search_site",
+            "status": "success",
+            "strategy_used": "search_content:uol_surface",
+            "duration_ms": 21121,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1463
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p01:select_profile",
+              "kind": "select_profile",
+              "status": "skipped",
+              "strategy_used": "select_identity_context:already_satisfied",
+              "duration_ms": 1114
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p02:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7748
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p03:open_url",
+              "kind": "open_site",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17019
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+              "kind": "search_site",
+              "status": "success",
+              "strategy_used": "search_content:uol_surface",
+              "duration_ms": 21121
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p05:scroll_results",
+              "kind": "scroll_results",
+              "status": "success",
+              "strategy_used": "browse_results:uol_scroll_surface",
+              "duration_ms": 4326
+            }
+          ],
+          "recorded_at": 1779645491.031466
+        },
+        {
+          "run_index": 3,
+          "status": "success",
+          "duration_ms": 55215,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156-cdc81c71",
+          "mission_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156",
+          "scenario_id": "chrome_youtube_launcher",
+          "weakest_step": {
+            "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+            "kind": "search_site",
+            "status": "success",
+            "strategy_used": "search_content:uol_surface",
+            "duration_ms": 21154,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1473
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p01:select_profile",
+              "kind": "select_profile",
+              "status": "skipped",
+              "strategy_used": "select_identity_context:already_satisfied",
+              "duration_ms": 1083
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p02:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7794
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p03:open_url",
+              "kind": "open_site",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17268
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+              "kind": "search_site",
+              "status": "success",
+              "strategy_used": "search_content:uol_surface",
+              "duration_ms": 21154
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p05:scroll_results",
+              "kind": "scroll_results",
+              "status": "success",
+              "strategy_used": "browse_results:uol_scroll_surface",
+              "duration_ms": 4335
+            }
+          ],
+          "recorded_at": 1779645545.3951159
+        },
+        {
+          "run_index": 4,
+          "status": "success",
+          "duration_ms": 56377,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156-e1937cc4",
+          "mission_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156",
+          "scenario_id": "chrome_youtube_launcher",
+          "weakest_step": {
+            "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+            "kind": "search_site",
+            "status": "success",
+            "strategy_used": "search_content:uol_surface",
+            "duration_ms": 22159,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1527
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p01:select_profile",
+              "kind": "select_profile",
+              "status": "skipped",
+              "strategy_used": "select_identity_context:already_satisfied",
+              "duration_ms": 1069
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p02:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7638
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p03:open_url",
+              "kind": "open_site",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 16826
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+              "kind": "search_site",
+              "status": "success",
+              "strategy_used": "search_content:uol_surface",
+              "duration_ms": 22159
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p05:scroll_results",
+              "kind": "scroll_results",
+              "status": "success",
+              "strategy_used": "browse_results:uol_scroll_surface",
+              "duration_ms": 4291
+            }
+          ],
+          "recorded_at": 1779645600.6117373
+        },
+        {
+          "run_index": 5,
+          "status": "success",
+          "duration_ms": 56267,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156-8f94be7e",
+          "mission_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156",
+          "scenario_id": "chrome_youtube_launcher",
+          "weakest_step": {
+            "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+            "kind": "search_site",
+            "status": "success",
+            "strategy_used": "search_content:uol_surface",
+            "duration_ms": 21146,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1519
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p01:select_profile",
+              "kind": "select_profile",
+              "status": "skipped",
+              "strategy_used": "select_identity_context:already_satisfied",
+              "duration_ms": 1070
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p02:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7739
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p03:open_url",
+              "kind": "open_site",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17025
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+              "kind": "search_site",
+              "status": "success",
+              "strategy_used": "search_content:uol_surface",
+              "duration_ms": 21146
+            },
+            {
+              "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p05:scroll_results",
+              "kind": "scroll_results",
+              "status": "success",
+              "strategy_used": "browse_results:uol_scroll_surface",
+              "duration_ms": 4352
+            }
+          ],
+          "recorded_at": 1779645656.9912126
+        }
+      ],
+      "aggregate": {
+        "run_count": 5,
+        "accepted_runs": 5,
+        "consecutive_accepted_runs": 5,
+        "coords_used_total": 0,
+        "smart_route_count": 0,
+        "runtime_timeout_count": 0,
+        "needs_human_count": 0,
+        "weakest_step": {
+          "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+          "kind": "search_site",
+          "status": "success",
+          "strategy_used": "search_content:uol_surface",
+          "duration_ms": 22159,
+          "reason": "slowest_step"
+        }
+      },
+      "weakest_step": {
+        "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+        "kind": "search_site",
+        "status": "success",
+        "strategy_used": "search_content:uol_surface",
+        "duration_ms": 22159,
+        "reason": "slowest_step"
+      },
+      "release_status": "ACCEPTED",
+      "runtime_flags": {
+        "BETA_PRIVATE_RUNTIME_PROFILE": true,
+        "BETA_PRIVATE_RELIABILITY_PROFILE": true,
+        "PCOF_ENABLED": true,
+        "OSUE_ENABLED": true,
+        "OSUE_SHADOW_ENABLED": true,
+        "ARSS_ENABLED": false,
+        "UOOL_ENABLED": true,
+        "OCRP_ENABLED": true,
+        "LONE_LIVE_BRIDGE_ENABLED": true,
+        "ONE_SHOT_RELIABILITY_ENABLED": true,
+        "RELIABILITY_HARDENING_ENABLED": true
+      },
+      "profile_label": "beta_runtime_converged",
+      "profile_drift": [],
+      "recorded_at": 1779645436.418836
+    },
+    {
+      "scenario_id": "notepad_write_save",
+      "category": "launcher·editor",
+      "description": "Windows Search → Notepad → escribir → guardar",
+      "mode": "live",
+      "required_runs": 5,
+      "runs": [
+        {
+          "run_index": 1,
+          "status": "success",
+          "duration_ms": 18253,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-83ae6476-d2e5-4bea-8096-12f46db93aec-07389f79",
+          "mission_id": "83ae6476-d2e5-4bea-8096-12f46db93aec",
+          "scenario_id": "notepad_write_save",
+          "weakest_step": {
+            "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_input:uol_submit",
+            "duration_ms": 8254,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1462
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 7921
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 8254
+            }
+          ],
+          "recorded_at": 1779645714.1688268
+        },
+        {
+          "run_index": 2,
+          "status": "success",
+          "duration_ms": 18871,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-83ae6476-d2e5-4bea-8096-12f46db93aec-cad2d235",
+          "mission_id": "83ae6476-d2e5-4bea-8096-12f46db93aec",
+          "scenario_id": "notepad_write_save",
+          "weakest_step": {
+            "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_input:uol_submit",
+            "duration_ms": 8412,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1623
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 8110
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 8412
+            }
+          ],
+          "recorded_at": 1779645732.4252326
+        },
+        {
+          "run_index": 3,
+          "status": "success",
+          "duration_ms": 19117,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-83ae6476-d2e5-4bea-8096-12f46db93aec-430e4578",
+          "mission_id": "83ae6476-d2e5-4bea-8096-12f46db93aec",
+          "scenario_id": "notepad_write_save",
+          "weakest_step": {
+            "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_input:uol_submit",
+            "duration_ms": 8410,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1534
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 7994
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 8410
+            }
+          ],
+          "recorded_at": 1779645751.299841
+        },
+        {
+          "run_index": 4,
+          "status": "success",
+          "duration_ms": 19427,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-83ae6476-d2e5-4bea-8096-12f46db93aec-b2fc3287",
+          "mission_id": "83ae6476-d2e5-4bea-8096-12f46db93aec",
+          "scenario_id": "notepad_write_save",
+          "weakest_step": {
+            "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_input:uol_submit",
+            "duration_ms": 8371,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1549
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 8149
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 8371
+            }
+          ],
+          "recorded_at": 1779645770.4200854
+        },
+        {
+          "run_index": 5,
+          "status": "success",
+          "duration_ms": 19585,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-83ae6476-d2e5-4bea-8096-12f46db93aec-4b9ef64d",
+          "mission_id": "83ae6476-d2e5-4bea-8096-12f46db93aec",
+          "scenario_id": "notepad_write_save",
+          "weakest_step": {
+            "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+            "kind": "fill_form",
+            "status": "success",
+            "strategy_used": "fill_form:uol_fields",
+            "duration_ms": 8321,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1600
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 8321
+            },
+            {
+              "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 8262
+            }
+          ],
+          "recorded_at": 1779645789.8493743
+        }
+      ],
+      "aggregate": {
+        "run_count": 5,
+        "accepted_runs": 5,
+        "consecutive_accepted_runs": 5,
+        "coords_used_total": 0,
+        "smart_route_count": 0,
+        "runtime_timeout_count": 0,
+        "needs_human_count": 0,
+        "weakest_step": {
+          "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+          "kind": "submit_form",
+          "status": "success",
+          "strategy_used": "submit_input:uol_submit",
+          "duration_ms": 8412,
+          "reason": "slowest_step"
+        }
+      },
+      "weakest_step": {
+        "step_id": "10d622bc-5a2b-4933-a35a-f87150453be3:p02:submit_form",
+        "kind": "submit_form",
+        "status": "success",
+        "strategy_used": "submit_input:uol_submit",
+        "duration_ms": 8412,
+        "reason": "slowest_step"
+      },
+      "release_status": "ACCEPTED",
+      "runtime_flags": {
+        "BETA_PRIVATE_RUNTIME_PROFILE": true,
+        "BETA_PRIVATE_RELIABILITY_PROFILE": true,
+        "PCOF_ENABLED": true,
+        "OSUE_ENABLED": true,
+        "OSUE_SHADOW_ENABLED": true,
+        "ARSS_ENABLED": false,
+        "UOOL_ENABLED": true,
+        "OCRP_ENABLED": true,
+        "LONE_LIVE_BRIDGE_ENABLED": true,
+        "ONE_SHOT_RELIABILITY_ENABLED": true,
+        "RELIABILITY_HARDENING_ENABLED": true
+      },
+      "profile_label": "beta_runtime_converged",
+      "profile_drift": [],
+      "recorded_at": 1779645713.2874432
+    },
+    {
+      "scenario_id": "web_form_simple",
+      "category": "browser·form",
+      "description": "Formulario web simple (3 campos + submit)",
+      "mode": "live",
+      "required_runs": 5,
+      "runs": [
+        {
+          "run_index": 1,
+          "status": "success",
+          "duration_ms": 30442,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f6a2e862-7a5f-495c-a5be-ac33e4870fde-e92b3bf6",
+          "mission_id": "f6a2e862-7a5f-495c-a5be-ac33e4870fde",
+          "scenario_id": "web_form_simple",
+          "weakest_step": {
+            "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_form:uol_submit",
+            "duration_ms": 7827,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p00:open_url",
+              "kind": "open_url",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1452
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6772
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p02:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6683
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p03:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6698
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_form:uol_submit",
+              "duration_ms": 7827
+            }
+          ],
+          "recorded_at": 1779645810.5963686
+        },
+        {
+          "run_index": 2,
+          "status": "success",
+          "duration_ms": 31628,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f6a2e862-7a5f-495c-a5be-ac33e4870fde-936ef7ca",
+          "mission_id": "f6a2e862-7a5f-495c-a5be-ac33e4870fde",
+          "scenario_id": "web_form_simple",
+          "weakest_step": {
+            "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_form:uol_submit",
+            "duration_ms": 7893,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p00:open_url",
+              "kind": "open_url",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1526
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6860
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p02:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6855
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p03:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6836
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_form:uol_submit",
+              "duration_ms": 7893
+            }
+          ],
+          "recorded_at": 1779645841.0409153
+        },
+        {
+          "run_index": 3,
+          "status": "success",
+          "duration_ms": 31822,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f6a2e862-7a5f-495c-a5be-ac33e4870fde-8ff01415",
+          "mission_id": "f6a2e862-7a5f-495c-a5be-ac33e4870fde",
+          "scenario_id": "web_form_simple",
+          "weakest_step": {
+            "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_form:uol_submit",
+            "duration_ms": 7782,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p00:open_url",
+              "kind": "open_url",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1521
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6764
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p02:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6743
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p03:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6712
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_form:uol_submit",
+              "duration_ms": 7782
+            }
+          ],
+          "recorded_at": 1779645872.6712606
+        },
+        {
+          "run_index": 4,
+          "status": "success",
+          "duration_ms": 33749,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f6a2e862-7a5f-495c-a5be-ac33e4870fde-cd348d09",
+          "mission_id": "f6a2e862-7a5f-495c-a5be-ac33e4870fde",
+          "scenario_id": "web_form_simple",
+          "weakest_step": {
+            "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_form:uol_submit",
+            "duration_ms": 7899,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p00:open_url",
+              "kind": "open_url",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1536
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6828
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p02:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6910
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p03:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6743
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_form:uol_submit",
+              "duration_ms": 7899
+            }
+          ],
+          "recorded_at": 1779645904.4978063
+        },
+        {
+          "run_index": 5,
+          "status": "success",
+          "duration_ms": 33046,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f6a2e862-7a5f-495c-a5be-ac33e4870fde-dd109927",
+          "mission_id": "f6a2e862-7a5f-495c-a5be-ac33e4870fde",
+          "scenario_id": "web_form_simple",
+          "weakest_step": {
+            "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+            "kind": "submit_form",
+            "status": "success",
+            "strategy_used": "submit_form:uol_submit",
+            "duration_ms": 7854,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p00:open_url",
+              "kind": "open_url",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1483
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p01:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6747
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p02:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6753
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p03:fill_form",
+              "kind": "fill_form",
+              "status": "success",
+              "strategy_used": "fill_form:uol_fields",
+              "duration_ms": 6747
+            },
+            {
+              "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+              "kind": "submit_form",
+              "status": "success",
+              "strategy_used": "submit_form:uol_submit",
+              "duration_ms": 7854
+            }
+          ],
+          "recorded_at": 1779645938.2498834
+        }
+      ],
+      "aggregate": {
+        "run_count": 5,
+        "accepted_runs": 5,
+        "consecutive_accepted_runs": 5,
+        "coords_used_total": 0,
+        "smart_route_count": 0,
+        "runtime_timeout_count": 0,
+        "needs_human_count": 0,
+        "weakest_step": {
+          "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+          "kind": "submit_form",
+          "status": "success",
+          "strategy_used": "submit_form:uol_submit",
+          "duration_ms": 7899,
+          "reason": "slowest_step"
+        }
+      },
+      "weakest_step": {
+        "step_id": "73a4750e-ba74-4fb2-9b58-415b5d9bb016:p04:submit_form",
+        "kind": "submit_form",
+        "status": "success",
+        "strategy_used": "submit_form:uol_submit",
+        "duration_ms": 7899,
+        "reason": "slowest_step"
+      },
+      "release_status": "ACCEPTED",
+      "runtime_flags": {
+        "BETA_PRIVATE_RUNTIME_PROFILE": true,
+        "BETA_PRIVATE_RELIABILITY_PROFILE": true,
+        "PCOF_ENABLED": true,
+        "OSUE_ENABLED": true,
+        "OSUE_SHADOW_ENABLED": true,
+        "ARSS_ENABLED": false,
+        "UOOL_ENABLED": true,
+        "OCRP_ENABLED": true,
+        "LONE_LIVE_BRIDGE_ENABLED": true,
+        "ONE_SHOT_RELIABILITY_ENABLED": true,
+        "RELIABILITY_HARDENING_ENABLED": true
+      },
+      "profile_label": "beta_runtime_converged",
+      "profile_drift": [],
+      "recorded_at": 1779645809.464352
+    },
+    {
+      "scenario_id": "confirmation_dialog",
+      "category": "dialog",
+      "description": "Diálogo confirmación (aceptar/cancelar)",
+      "mode": "live",
+      "required_runs": 5,
+      "runs": [
+        {
+          "run_index": 1,
+          "status": "success",
+          "duration_ms": 21840,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-46e9d729-6fa5-41c9-bdb7-d20d023fe04f-34df4937",
+          "mission_id": "46e9d729-6fa5-41c9-bdb7-d20d023fe04f",
+          "scenario_id": "confirmation_dialog",
+          "weakest_step": {
+            "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+            "kind": "switch_context",
+            "status": "success",
+            "strategy_used": "switch_context:uol_context",
+            "duration_ms": 10287,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1502
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+              "kind": "switch_context",
+              "status": "success",
+              "strategy_used": "switch_context:uol_context",
+              "duration_ms": 10287
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p02:confirm_dialog",
+              "kind": "confirm_dialog",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 9597
+            }
+          ],
+          "recorded_at": 1779645972.1037517
+        },
+        {
+          "run_index": 2,
+          "status": "success",
+          "duration_ms": 21196,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-46e9d729-6fa5-41c9-bdb7-d20d023fe04f-747ff0a8",
+          "mission_id": "46e9d729-6fa5-41c9-bdb7-d20d023fe04f",
+          "scenario_id": "confirmation_dialog",
+          "weakest_step": {
+            "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+            "kind": "switch_context",
+            "status": "success",
+            "strategy_used": "switch_context:uol_context",
+            "duration_ms": 10038,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1444
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+              "kind": "switch_context",
+              "status": "success",
+              "strategy_used": "switch_context:uol_context",
+              "duration_ms": 10038
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p02:confirm_dialog",
+              "kind": "confirm_dialog",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 9056
+            }
+          ],
+          "recorded_at": 1779645993.9467282
+        },
+        {
+          "run_index": 3,
+          "status": "success",
+          "duration_ms": 36028,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-46e9d729-6fa5-41c9-bdb7-d20d023fe04f-e323b992",
+          "mission_id": "46e9d729-6fa5-41c9-bdb7-d20d023fe04f",
+          "scenario_id": "confirmation_dialog",
+          "weakest_step": {
+            "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+            "kind": "open_app",
+            "status": "success",
+            "strategy_used": "open_application:uol_launcher",
+            "duration_ms": 15642,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+              "kind": "open_app",
+              "status": "success",
+              "strategy_used": "open_application:uol_launcher",
+              "duration_ms": 15642
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+              "kind": "switch_context",
+              "status": "success",
+              "strategy_used": "switch_context:uol_context",
+              "duration_ms": 10028
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p02:confirm_dialog",
+              "kind": "confirm_dialog",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 9491
+            }
+          ],
+          "recorded_at": 1779646015.1465294
+        },
+        {
+          "run_index": 4,
+          "status": "success",
+          "duration_ms": 36088,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-46e9d729-6fa5-41c9-bdb7-d20d023fe04f-da3a3453",
+          "mission_id": "46e9d729-6fa5-41c9-bdb7-d20d023fe04f",
+          "scenario_id": "confirmation_dialog",
+          "weakest_step": {
+            "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+            "kind": "open_app",
+            "status": "success",
+            "strategy_used": "open_application:uol_launcher",
+            "duration_ms": 15663,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+              "kind": "open_app",
+              "status": "success",
+              "strategy_used": "open_application:uol_launcher",
+              "duration_ms": 15663
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+              "kind": "switch_context",
+              "status": "success",
+              "strategy_used": "switch_context:uol_context",
+              "duration_ms": 10102
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p02:confirm_dialog",
+              "kind": "confirm_dialog",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 9196
+            }
+          ],
+          "recorded_at": 1779646051.177691
+        },
+        {
+          "run_index": 5,
+          "status": "success",
+          "duration_ms": 37076,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-46e9d729-6fa5-41c9-bdb7-d20d023fe04f-aebfc8eb",
+          "mission_id": "46e9d729-6fa5-41c9-bdb7-d20d023fe04f",
+          "scenario_id": "confirmation_dialog",
+          "weakest_step": {
+            "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+            "kind": "open_app",
+            "status": "success",
+            "strategy_used": "open_application:uol_launcher",
+            "duration_ms": 15824,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+              "kind": "open_app",
+              "status": "success",
+              "strategy_used": "open_application:uol_launcher",
+              "duration_ms": 15824
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p01:switch_context",
+              "kind": "switch_context",
+              "status": "success",
+              "strategy_used": "switch_context:uol_context",
+              "duration_ms": 9992
+            },
+            {
+              "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p02:confirm_dialog",
+              "kind": "confirm_dialog",
+              "status": "success",
+              "strategy_used": "submit_input:uol_submit",
+              "duration_ms": 9553
+            }
+          ],
+          "recorded_at": 1779646087.268333
+        }
+      ],
+      "aggregate": {
+        "run_count": 5,
+        "accepted_runs": 5,
+        "consecutive_accepted_runs": 5,
+        "coords_used_total": 0,
+        "smart_route_count": 0,
+        "runtime_timeout_count": 0,
+        "needs_human_count": 0,
+        "weakest_step": {
+          "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+          "kind": "open_app",
+          "status": "success",
+          "strategy_used": "open_application:uol_launcher",
+          "duration_ms": 15824,
+          "reason": "slowest_step"
+        }
+      },
+      "weakest_step": {
+        "step_id": "ce9040a2-5c57-4b7f-ae0a-10aad84700d9:p00:open_app",
+        "kind": "open_app",
+        "status": "success",
+        "strategy_used": "open_application:uol_launcher",
+        "duration_ms": 15824,
+        "reason": "slowest_step"
+      },
+      "release_status": "ACCEPTED",
+      "runtime_flags": {
+        "BETA_PRIVATE_RUNTIME_PROFILE": true,
+        "BETA_PRIVATE_RELIABILITY_PROFILE": true,
+        "PCOF_ENABLED": true,
+        "OSUE_ENABLED": true,
+        "OSUE_SHADOW_ENABLED": true,
+        "ARSS_ENABLED": false,
+        "UOOL_ENABLED": true,
+        "OCRP_ENABLED": true,
+        "LONE_LIVE_BRIDGE_ENABLED": true,
+        "ONE_SHOT_RELIABILITY_ENABLED": true,
+        "RELIABILITY_HARDENING_ENABLED": true
+      },
+      "profile_label": "beta_runtime_converged",
+      "profile_drift": [],
+      "recorded_at": 1779645971.3099346
+    },
+    {
+      "scenario_id": "relayout_window",
+      "category": "re-layout",
+      "description": "Re-layout: ventana movida/redimensionada entre runs",
+      "mode": "live",
+      "required_runs": 5,
+      "runs": [
+        {
+          "run_index": 1,
+          "status": "success",
+          "duration_ms": 27948,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f04acf07-7982-4354-8ef0-517486b02d69-1313dbe1",
+          "mission_id": "f04acf07-7982-4354-8ef0-517486b02d69",
+          "scenario_id": "relayout_window",
+          "weakest_step": {
+            "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+            "kind": "open_url",
+            "status": "success",
+            "strategy_used": "navigate_to_location:uol_address_surface",
+            "duration_ms": 17283,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1586
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p01:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 8002
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+              "kind": "open_url",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17283
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p03:scroll_page",
+              "kind": "scroll_page",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 585
+            }
+          ],
+          "recorded_at": 1779646125.3213694
+        },
+        {
+          "run_index": 2,
+          "status": "success",
+          "duration_ms": 27839,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f04acf07-7982-4354-8ef0-517486b02d69-c7279d85",
+          "mission_id": "f04acf07-7982-4354-8ef0-517486b02d69",
+          "scenario_id": "relayout_window",
+          "weakest_step": {
+            "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+            "kind": "open_url",
+            "status": "success",
+            "strategy_used": "navigate_to_location:uol_address_surface",
+            "duration_ms": 17161,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1487
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p01:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7925
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+              "kind": "open_url",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17161
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p03:scroll_page",
+              "kind": "scroll_page",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 586
+            }
+          ],
+          "recorded_at": 1779646153.2730432
+        },
+        {
+          "run_index": 3,
+          "status": "success",
+          "duration_ms": 28229,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f04acf07-7982-4354-8ef0-517486b02d69-b20dfc94",
+          "mission_id": "f04acf07-7982-4354-8ef0-517486b02d69",
+          "scenario_id": "relayout_window",
+          "weakest_step": {
+            "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+            "kind": "open_url",
+            "status": "success",
+            "strategy_used": "navigate_to_location:uol_address_surface",
+            "duration_ms": 16956,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1498
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p01:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 7980
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+              "kind": "open_url",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 16956
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p03:scroll_page",
+              "kind": "scroll_page",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 597
+            }
+          ],
+          "recorded_at": 1779646181.1166186
+        },
+        {
+          "run_index": 4,
+          "status": "success",
+          "duration_ms": 28703,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f04acf07-7982-4354-8ef0-517486b02d69-3e1f1fd2",
+          "mission_id": "f04acf07-7982-4354-8ef0-517486b02d69",
+          "scenario_id": "relayout_window",
+          "weakest_step": {
+            "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+            "kind": "open_url",
+            "status": "success",
+            "strategy_used": "navigate_to_location:uol_address_surface",
+            "duration_ms": 17322,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1473
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p01:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 8152
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+              "kind": "open_url",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17322
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p03:scroll_page",
+              "kind": "scroll_page",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 593
+            }
+          ],
+          "recorded_at": 1779646209.3494012
+        },
+        {
+          "run_index": 5,
+          "status": "success",
+          "duration_ms": 28803,
+          "coords_used": false,
+          "smart_route_count": 0,
+          "runtime_timeout": false,
+          "needs_human": false,
+          "human_retry": false,
+          "blocked": false,
+          "block_reason": "smart_executor_no_auto_learning",
+          "acceptance": "ACCEPTED",
+          "run_id": "smart-f04acf07-7982-4354-8ef0-517486b02d69-a5dafd99",
+          "mission_id": "f04acf07-7982-4354-8ef0-517486b02d69",
+          "scenario_id": "relayout_window",
+          "weakest_step": {
+            "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+            "kind": "open_url",
+            "status": "success",
+            "strategy_used": "navigate_to_location:uol_address_surface",
+            "duration_ms": 17205,
+            "reason": "slowest_step"
+          },
+          "step_strategies": [
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p00:open_app",
+              "kind": "open_app",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 1574
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p01:open_new_tab",
+              "kind": "open_new_tab",
+              "status": "success",
+              "strategy_used": "open_tab:uol_hotkey",
+              "duration_ms": 8164
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+              "kind": "open_url",
+              "status": "success",
+              "strategy_used": "navigate_to_location:uol_address_surface",
+              "duration_ms": 17205
+            },
+            {
+              "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p03:scroll_page",
+              "kind": "scroll_page",
+              "status": "skipped",
+              "strategy_used": "skip:already_satisfied",
+              "duration_ms": 597
+            }
+          ],
+          "recorded_at": 1779646238.0557108
+        }
+      ],
+      "aggregate": {
+        "run_count": 5,
+        "accepted_runs": 5,
+        "consecutive_accepted_runs": 5,
+        "coords_used_total": 0,
+        "smart_route_count": 0,
+        "runtime_timeout_count": 0,
+        "needs_human_count": 0,
+        "weakest_step": {
+          "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+          "kind": "open_url",
+          "status": "success",
+          "strategy_used": "navigate_to_location:uol_address_surface",
+          "duration_ms": 17322,
+          "reason": "slowest_step"
+        }
+      },
+      "weakest_step": {
+        "step_id": "dfe72b9d-4fd9-4f1e-9dea-1fc4902befc6:p02:open_url",
+        "kind": "open_url",
+        "status": "success",
+        "strategy_used": "navigate_to_location:uol_address_surface",
+        "duration_ms": 17322,
+        "reason": "slowest_step"
+      },
+      "release_status": "ACCEPTED",
+      "runtime_flags": {
+        "BETA_PRIVATE_RUNTIME_PROFILE": true,
+        "BETA_PRIVATE_RELIABILITY_PROFILE": true,
+        "PCOF_ENABLED": true,
+        "OSUE_ENABLED": true,
+        "OSUE_SHADOW_ENABLED": true,
+        "ARSS_ENABLED": false,
+        "UOOL_ENABLED": true,
+        "OCRP_ENABLED": true,
+        "LONE_LIVE_BRIDGE_ENABLED": true,
+        "ONE_SHOT_RELIABILITY_ENABLED": true,
+        "RELIABILITY_HARDENING_ENABLED": true
+      },
+      "profile_label": "beta_runtime_converged",
+      "profile_drift": [],
+      "recorded_at": 1779646124.3604617
+    }
+  ],
+  "aggregate": {
+    "run_count": 25,
+    "accepted_runs": 25,
+    "consecutive_accepted_runs": 25,
+    "coords_used_total": 0,
+    "smart_route_count": 0,
+    "runtime_timeout_count": 0,
+    "needs_human_count": 0,
+    "weakest_step": {
+      "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+      "kind": "search_site",
+      "status": "success",
+      "strategy_used": "search_content:uol_surface",
+      "duration_ms": 22159,
+      "reason": "slowest_step"
+    }
+  },
+  "weakest_step": {
+    "step_id": "5ad0a6ca-0609-4c4e-bd18-b1ba3f2f1156:p04:search_content",
+    "kind": "search_site",
+    "status": "success",
+    "strategy_used": "search_content:uol_surface",
+    "duration_ms": 22159,
+    "reason": "slowest_step"
+  },
+  "release_status": "ACCEPTED",
+  "recorded_at": 1779645434.801958
+}

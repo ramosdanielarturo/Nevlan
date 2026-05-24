@@ -1,0 +1,9 @@
+var/**
+!var/.keep
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+*.spec
+dist/
+build/
