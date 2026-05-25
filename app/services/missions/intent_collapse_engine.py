@@ -385,6 +385,8 @@ class _Context:
     # rellena con ``"<perfil> - Google Chrome"`` y es una de las
     # fuentes que el ``profile_resolver`` consulta.
     profile_window_title: Optional[str] = None
+    # Precapture OCR collection metadata (Chrome profile tiles, etc.)
+    ocr_collection_meta: Optional[Dict[str, Any]] = None
     new_tab_seen: bool = False
     new_tab_method: str = "ctrl_t"
     youtube_visited: bool = False
@@ -913,6 +915,26 @@ def _build_context(
                     )
                     if not is_invalid_profile_evidence(cand_ocr):
                         ctx.profile_name_ocr = cand_ocr
+            # Precapture ring OCR candidates (weak UIA / profile tiles).
+            if not ctx.profile_name_ocr:
+                try:
+                    from app.services.missions.collection_click_semantic import (
+                        build_collection_semantic_step,
+                    )
+                    mx = my = None
+                    if ev.mouse_action:
+                        mx, my = ev.mouse_action.x, ev.mouse_action.y
+                    col = build_collection_semantic_step(
+                        ev.metadata or {},
+                        click_xy=(mx, my) if mx is not None else None,
+                    )
+                    if col:
+                        lbl = str(col.get("params", {}).get("label_text") or "")
+                        if lbl:
+                            ctx.profile_name_ocr = lbl
+                            ctx.ocr_collection_meta = col.get("params")
+                except Exception:
+                    pass
             # PRD 2026-05-07c §A: capturar observación humana del flow.
             # Aceptamos cualquier label adjunto al click (el recorder
             # puede haberlo extraído del UIA del item del picker —
@@ -1230,16 +1252,22 @@ def _detect_select_profile(ctx: _Context) -> Optional[CollapsedStep]:
         res = None
 
     if res is not None and res.is_resolved and res.profile_name:
+        params: Dict[str, Any] = {
+            "app": ctx.first_browser or "chrome",
+            "profile": res.profile_name,
+            "candidate_aliases": list(res.candidate_aliases),
+        }
+        if ctx.ocr_collection_meta:
+            params.update({
+                k: v for k, v in ctx.ocr_collection_meta.items()
+                if k in (
+                    "strategy", "label_text", "precapture_frames",
+                    "collection_candidates", "candidates_digest", "bbox_hint",
+                )
+            })
         return CollapsedStep(
             type="select_profile",
-            params={
-                "app": ctx.first_browser or "chrome",
-                "profile": res.profile_name,
-                # Aliases candidatos para el alias_store: persistirlos
-                # cuando el usuario apruebe la misión refuerza el
-                # aprendizaje de futuras sesiones.
-                "candidate_aliases": list(res.candidate_aliases),
-            },
+            params=params,
             confidence=0.92 if res.source != "ocr" else 0.88,
             human_label=f"Seleccionar perfil {res.profile_name}",
             evidence={
