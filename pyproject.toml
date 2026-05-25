@@ -54,6 +54,11 @@ windows = [
     "pynput>=1.7; sys_platform == 'win32'",
 ]
 
+# Optional OCR backends (not installed in CI — lazy import at runtime).
+vision = [
+    "pytesseract>=0.3.10",
+]
+
 # Optional cloud LLM providers (keys via .env only).
 llm = [
     "openai>=1.0",
