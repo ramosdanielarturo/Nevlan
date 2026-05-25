@@ -51,11 +51,14 @@ from app.services.missions.recorder_capture_contract import (
     is_uia_weak,
     maybe_run_ocr,
     attach_precapture_diagnostics,
+    attach_precapture_frames,
+    extract_collection_candidates_from_detections,
     CAPTURE_PHASE_PRE_CLICK,
     ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
     CAPTURE_PHASE_POST_ACTION,
     ANCHOR_SOURCE_PYNPUT_POST_CAPTURE,
     TARGET_PRECAPTURE_MISSING,
+    DEFAULT_PRECLICK_FRAME_COUNT,
 )
 
 # Opcional: obtener process_name a partir del pid
@@ -476,6 +479,15 @@ class MouseListener(InputListener):
                             phase=CAPTURE_PHASE_PRE_CLICK,
                             source=ANCHOR_SOURCE_PYNPUT_MOUSEDOWN,
                         )
+                        preclick_frames: List[Any] = []
+                        if self._pre_buffer is not None:
+                            try:
+                                preclick_frames = self._pre_buffer.get_last_n_before(
+                                    int(time.time() * 1000),
+                                    DEFAULT_PRECLICK_FRAME_COUNT,
+                                )
+                            except Exception:
+                                preclick_frames = []
                         with self._pending_click_lock:
                             self._pending_click = {
                                 "x": int(x),
@@ -484,6 +496,7 @@ class MouseListener(InputListener):
                                 "t_down": now,
                                 "window_ctx": wctx,
                                 "before_anchor": pre_anchor,
+                                "preclick_frames": preclick_frames,
                             }
                     except Exception as e:
                         log.debug(f"pre_click pending capture failed: {e}")
@@ -826,6 +839,40 @@ class MouseListener(InputListener):
                 )
             except Exception as e:
                 log.debug(f"apply_capture_contract failed: {e}")
+
+            # Pre-click ring frames (FASE 1+): adjuntar N frames del mousedown.
+            try:
+                preclick_frames = (
+                    (pending_click or {}).get("preclick_frames") or []
+                )
+                if not preclick_frames and self._pre_buffer is not None:
+                    preclick_frames = self._pre_buffer.get_last_n_before(
+                        click_ts_ms, DEFAULT_PRECLICK_FRAME_COUNT,
+                    )
+                collection_candidates: List[Dict[str, Any]] = []
+                if preclick_frames:
+                    try:
+                        from app.services.missions.vision.text_detector import (
+                            get_default_detector,
+                        )
+                        detector = get_default_detector()
+                        for frame in preclick_frames:
+                            path = frame.full_path if hasattr(frame, "full_path") else frame
+                            if not path:
+                                continue
+                            dets = detector.detect(str(path))
+                            collection_candidates.extend(
+                                extract_collection_candidates_from_detections(dets),
+                            )
+                    except Exception as e:
+                        log.debug(f"precapture OCR candidates failed: {e}")
+                    attach_precapture_frames(
+                        metadata,
+                        preclick_frames,
+                        collection_candidates=collection_candidates or None,
+                    )
+            except Exception as e:
+                log.debug(f"attach_precapture_frames failed: {e}")
 
             # 3a) Pre-Click Operational Freeze (PCOF): consolidar identidad
             #     operacional ANTES de comparar target vs outcome.

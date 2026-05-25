@@ -66,9 +66,11 @@ from typing import Any, Callable, Deque, Dict, List, Mapping, Optional, Sequence
 # ──────────────────────────────────────────────────────────────────────
 
 #: Frames que el ring buffer mantiene activos. PRD 2026-05-12:
-#: reducido a 2 frames. Solo el más reciente se usa como pre_snapshot
-#: canónico; el penúltimo queda como respaldo si el reloj es ruidoso.
-DEFAULT_BUFFER_CAPACITY: int = 2
+#: mínimo 5 para servir pre_snapshot canónico + preclick ring (3 frames).
+DEFAULT_BUFFER_CAPACITY: int = 5
+
+#: Frames previos al mouse_down que se adjuntan en ``metadata.precapture``.
+DEFAULT_PRECLICK_FRAME_COUNT: int = 3
 
 #: Período entre capturas del buffer. PRD 2026-05-12: bajado a 100 ms
 #: para que el pre_snapshot sea como mucho ~100 ms anterior al click.
@@ -296,6 +298,30 @@ class ScreenshotRingBuffer:
         return PreActionSnapshot(
             full_path=path, captured_at_ms=int(fts), age_ms=int(age),
         )
+
+    def get_last_n_before(
+        self,
+        ts_ms: int,
+        n: int = DEFAULT_PRECLICK_FRAME_COUNT,
+        *,
+        max_age_ms: int = DEFAULT_PRE_SNAPSHOT_MAX_AGE_MS,
+    ) -> List[PreActionSnapshot]:
+        """Hasta ``n`` frames capturados antes de ``ts_ms`` (más reciente primero)."""
+        count = max(1, int(n))
+        with self._lock:
+            candidates = [
+                (fts, path) for fts, path in self._frames if fts <= ts_ms
+            ]
+        candidates.sort(key=lambda t: t[0], reverse=True)
+        out: List[PreActionSnapshot] = []
+        for fts, path in candidates[:count]:
+            age = int(ts_ms) - int(fts)
+            if age < 0 or age > int(max_age_ms):
+                continue
+            out.append(PreActionSnapshot(
+                full_path=path, captured_at_ms=int(fts), age_ms=int(age),
+            ))
+        return out
 
     # ──────────────────────────────────────────────────────────
     def _run(self) -> None:
@@ -1409,6 +1435,66 @@ def apply_capture_contract_to_metadata(
     return metadata
 
 
+def attach_precapture_frames(
+    metadata: Dict[str, Any],
+    frames: Sequence[PreActionSnapshot],
+    *,
+    collection_candidates: Optional[List[Dict[str, Any]]] = None,
+) -> Dict[str, Any]:
+    """Adjunta ring de frames pre-click y candidatos OCR de colección."""
+    if not frames:
+        return metadata
+    frame_paths = [f.full_path for f in frames if f.full_path]
+    if not frame_paths:
+        return metadata
+    precap: Dict[str, Any] = {
+        "frames": frame_paths,
+        "ts": [int(f.captured_at_ms) for f in frames if f.full_path],
+        "phase": CAPTURE_PHASE_PRE_CLICK,
+    }
+    if collection_candidates:
+        precap["collection_candidates"] = list(collection_candidates)
+        try:
+            from app.services.missions.vision.text_detector import (
+                build_candidates_digest,
+            )
+            precap["candidates_digest"] = build_candidates_digest(
+                collection_candidates,
+            )
+        except Exception:
+            pass
+    metadata["precapture"] = precap
+    return metadata
+
+
+def extract_collection_candidates_from_detections(
+    detections: Sequence[Any],
+) -> List[Dict[str, Any]]:
+    """Normaliza detecciones TextDetector → lista estable para metadata."""
+    out: List[Dict[str, Any]] = []
+    seen: set = set()
+    for det in detections:
+        if hasattr(det, "to_dict"):
+            d = det.to_dict()
+        elif isinstance(det, dict):
+            d = det
+        else:
+            continue
+        text = str(d.get("text") or "").strip()
+        if len(text) < 2:
+            continue
+        key = (text.lower(), tuple(sorted((d.get("bbox") or {}).items())))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({
+            "text": text,
+            "bbox": dict(d.get("bbox") or {}),
+            "confidence": float(d.get("confidence") or 1.0),
+        })
+    return out
+
+
 def attach_precapture_diagnostics(
     metadata: Dict[str, Any],
     *,
@@ -1478,8 +1564,11 @@ __all__ = [
     "is_identity_anchor",
     "resolve_identity_anchor",
     "attach_precapture_diagnostics",
+    "attach_precapture_frames",
+    "extract_collection_candidates_from_detections",
     "aggregate_precapture_metrics",
     "DEFAULT_BUFFER_CAPACITY",
+    "DEFAULT_PRECLICK_FRAME_COUNT",
     "DEFAULT_BUFFER_PERIOD_MS",
     "DEFAULT_PRE_SNAPSHOT_MAX_AGE_MS",
     "DEFAULT_POST_DELAYS_MS",
