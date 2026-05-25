@@ -337,6 +337,7 @@ def _build_select_profile(step: MissionStep) -> StepContract:
         postcondition=post,
         preferred_strategy="select_profile:skip_if_loaded",
         fallback_strategies=[
+            "select_profile:ocr_collection",
             "select_profile:uia_text_match",
             "select_profile:visible_text_ocr",
             "select_profile:visual_asset",

@@ -374,6 +374,70 @@ def _select_profile_visible_text_ocr(
     )
 
 
+def _ocr_collection_strategy(
+    step: MissionStep, state: StateSnapshot, *, strategy_name: str,
+) -> StrategyResult:
+    """Resuelve tile/lista por texto+bbox (precapture o live OCR)."""
+    from app.services.missions.ocr_collection_resolver import ocr_collection_resolve
+    from app.services.missions.vision.text_detector import get_default_detector
+
+    label = (
+        step.params.get("label_text")
+        or step.params.get("profile_name")
+        or step.params.get("profile")
+        or ""
+    ).strip()
+    frames = list(step.params.get("precapture_frames") or [])
+    stored = list(step.params.get("collection_candidates") or [])
+    live_paths: List[str] = []
+    if getattr(state, "screenshot_path", None):
+        live_paths.append(str(state.screenshot_path))
+    image_paths = live_paths or frames
+
+    result = ocr_collection_resolve(
+        label,
+        image_paths,
+        detector=get_default_detector(),
+        stored_candidates=stored,
+    )
+    if not result.ok:
+        return _fail(
+            strategy_name,
+            result.message,
+            error_code=result.error_code,
+            suggestion=result.suggestion,
+            ask_human=result.error_code == "COLLECTION_AMBIGUOUS",
+        )
+    if not HAS_PYAUTOGUI or result.click_xy is None:
+        return _fail(strategy_name, "pyautogui no disponible")
+    cx, cy = result.click_xy
+    try:
+        pyautogui.click(cx, cy)
+        return _ok(
+            strategy_name,
+            f"click OCR collection '{label}' @ ({cx},{cy})",
+            bbox=result.bbox,
+        )
+    except Exception as e:
+        return _fail(strategy_name, str(e))
+
+
+def _select_profile_ocr_collection(
+    step: MissionStep, state: StateSnapshot,
+) -> StrategyResult:
+    return _ocr_collection_strategy(
+        step, state, strategy_name="select_profile:ocr_collection",
+    )
+
+
+def _click_collection_item_ocr_collection(
+    step: MissionStep, state: StateSnapshot,
+) -> StrategyResult:
+    return _ocr_collection_strategy(
+        step, state, strategy_name="click_collection_item:ocr_collection",
+    )
+
+
 def _select_profile_visual_asset(
     step: MissionStep, _state: StateSnapshot
 ) -> StrategyResult:
@@ -1232,10 +1296,12 @@ _STRATEGY_REGISTRY: Dict[str, StrategyFn] = {
     "open_app:windows_search": _open_app_windows_search,
     # select_profile
     "select_profile:skip_if_loaded": _select_profile_skip_if_loaded,
+    "select_profile:ocr_collection": _select_profile_ocr_collection,
     "select_profile:uia_text_match": _select_profile_uia_text,
     "select_profile:visible_text_ocr": _select_profile_visible_text_ocr,
     "select_profile:visual_asset": _select_profile_visual_asset,
     "select_profile:relative_coords": _select_profile_relative_coords,
+    "click_collection_item:ocr_collection": _click_collection_item_ocr_collection,
     # open_new_tab
     "open_new_tab:hotkey_ctrl_t": _open_new_tab_hotkey,
     "open_new_tab:uia_button": _open_new_tab_uia,

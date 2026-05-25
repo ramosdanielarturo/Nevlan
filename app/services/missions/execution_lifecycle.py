@@ -128,6 +128,10 @@ UNSUPPORTED_SEMANTIC_STEP_TYPE = "UNSUPPORTED_SEMANTIC_STEP_TYPE"
 # inválido, profile picker invisible, perfil no listado, etc.). Falla
 # visible en lugar de quedarse en bucle de recovery indefinido.
 PROFILE_SELECTION_FAILED = "PROFILE_SELECTION_FAILED"
+# OCR collection resolution (list/tile clicks without coords primary path)
+COLLECTION_ITEM_NOT_FOUND = "COLLECTION_ITEM_NOT_FOUND"
+COLLECTION_AMBIGUOUS = "COLLECTION_AMBIGUOUS"
+OCR_DETECTOR_UNAVAILABLE = "OCR_DETECTOR_UNAVAILABLE"
 
 
 KNOWN_ERROR_CODES: frozenset = frozenset({
@@ -143,6 +147,9 @@ KNOWN_ERROR_CODES: frozenset = frozenset({
     GATE_BLOCKED,
     UNSUPPORTED_SEMANTIC_STEP_TYPE,
     PROFILE_SELECTION_FAILED,
+    COLLECTION_ITEM_NOT_FOUND,
+    COLLECTION_AMBIGUOUS,
+    OCR_DETECTOR_UNAVAILABLE,
 })
 
 
