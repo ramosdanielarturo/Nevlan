@@ -52,6 +52,22 @@ playwright install chromium
 
 Configure `.env` from `.env.example`, then run: `python main.py`
 
+### OCR opcional (colecciones / profile picker)
+
+La resolución por texto+bbox (`ocr_collection`) usa un plugin opcional. **CI no instala OCR** — en tests se usa `FakeDetector`.
+
+**Habilitar OCR real (Windows desktop):**
+
+```bash
+pip install -e ".[ci,desktop,windows,vision]"
+```
+
+Instala también el binario [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) y asegúrate de que `tesseract.exe` esté en `PATH` (o define `TESSDATA_PREFIX` si aplica).
+
+En runtime, `get_default_detector()` intenta cargar `TesseractDetector` de forma lazy; si falla, usa `NullDetector` y el paso falla con `OCR_DETECTOR_UNAVAILABLE` (sin caer a coordenadas).
+
+**Validación smoke (5 clicks):** graba un flujo con Chrome profile picker, aprueba la misión y ejecuta. En el JSON del click debe aparecer `metadata.precapture.frames` (3) con `phase=pre_click`. En ejecución, `select_profile:ocr_collection` busca `label_text` en pantalla.
+
 ## Documentation
 - [Lecciones Aprendidas](LECCIONES_APRENDIDAS.md): The system's long-term memory.
 - [Changelog](CHANGELOG.md): History of changes.

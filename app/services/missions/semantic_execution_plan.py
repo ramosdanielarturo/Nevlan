@@ -175,6 +175,7 @@ _STRATEGY_BY_TYPE: Dict[str, _StrategyPlan] = {
     "select_profile": _StrategyPlan(
         preferred="select_profile:uia_text_match",
         fallbacks=(
+            "select_profile:ocr_collection",
             "select_profile:visible_text_ocr",
             "select_profile:chrome_profile_alias",
             "select_profile:skip_if_loaded",

@@ -554,6 +554,18 @@ def _convert_one(
                 step_index=index,
                 step_type=t,
             )
+        ocr_params = {}
+        if str(params_in.get("strategy") or "") == "ocr_collection":
+            ocr_params = {
+                "strategy": "ocr_collection",
+                "label_text": profile,
+                "precapture_frames": list(params_in.get("precapture_frames") or []),
+                "collection_candidates": list(
+                    params_in.get("collection_candidates") or []
+                ),
+                "candidates_digest": str(params_in.get("candidates_digest") or ""),
+                "bbox_hint": dict(params_in.get("bbox_hint") or {}),
+            }
         return (
             MissionStep(
                 id=step_id,
@@ -561,6 +573,7 @@ def _convert_one(
                 params={
                     "profile_name": profile,
                     "app": str(params_in.get("app") or "").strip() or "chrome",
+                    **ocr_params,
                 },
                 block_id=block,
                 human_label=f"Seleccionar perfil {profile}",
