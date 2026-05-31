@@ -631,6 +631,12 @@ def run_mission_smart(
             return decision
 
         steps = semantic_plan_to_mission_steps(plan)
+        try:
+            from app.services.missions.strategy_packs import apply_strategy_packs
+
+            steps = apply_strategy_packs(steps, mission)
+        except Exception:
+            pass
         decision.source = plan_source
         decision.legacy_graph_ignored = legacy_graph_ignored
         decision.semantic_plan = plan
