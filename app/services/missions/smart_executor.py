@@ -931,6 +931,18 @@ class SmartMissionExecutor:
                 msg = contract.human_done or uol_hook.strategy_result.message or "Acción UOL ejecutada."
                 self._announce(msg)
                 self._maybe_checkpoint(step, contract, state_after)
+                blocked = self._verify_post_step_or_human(
+                    step,
+                    contract,
+                    before,
+                    state_after,
+                    t0,
+                    retries=retries,
+                    strategy=strat,
+                    _uol_tel=_uol_tel,
+                )
+                if blocked is not None:
+                    return blocked
                 return self._uol_telemetry_finish_step(
                     _uol_tel,
                     StepOutcome(
@@ -1125,6 +1137,18 @@ class SmartMissionExecutor:
                 msg = contract.human_done or "Entidad ejecutada."
                 self._announce(msg)
                 self._maybe_checkpoint(step, contract, state_after)
+                blocked = self._verify_post_step_or_human(
+                    step,
+                    contract,
+                    before,
+                    state_after,
+                    t0,
+                    retries=retries,
+                    strategy=strat,
+                    _uol_tel=_uol_tel,
+                )
+                if blocked is not None:
+                    return blocked
                 return StepOutcome(
                     step_id=step.id,
                     kind=step.kind,
@@ -1142,8 +1166,44 @@ class SmartMissionExecutor:
             )
             log.debug("[ERL] entity click ok pero postcondition falló: %s", last_error)
 
+        # 3c. Universal identity gate — no blind clicks when identity is weak.
+        try:
+            from app.services.missions.identity_confidence_gate import (
+                NEEDS_REVIEW as _IDENTITY_NEEDS_REVIEW,
+                evaluate_identity_gate,
+            )
+
+            gate = evaluate_identity_gate(step)
+            if not gate.allowed:
+                return self._uol_telemetry_finish_step(
+                    _uol_tel,
+                    self._needs_human_outcome(
+                        step,
+                        contract,
+                        gate.human_message or "Necesita aclaración de identidad.",
+                        before,
+                        t0,
+                        retries=retries,
+                        strategy="identity_gate:needs_review",
+                        error=gate.failure_code or _IDENTITY_NEEDS_REVIEW,
+                    ),
+                )
+        except Exception as _ig_exc:
+            log.debug("[IdentityGate] %s", _ig_exc)
+
         # 4. Ejecutar acción con prioridad y fallbacks (+ rondas opcionales ARL).
         candidate_strategies = _resolve_strategies(step, contract, self.mission_ref)
+        try:
+            from app.services.missions.identity_confidence_gate import (
+                filter_strategies_identity_first,
+            )
+
+            candidate_strategies = filter_strategies_identity_first(
+                candidate_strategies,
+                step,
+            )
+        except Exception:
+            pass
         if step.params.get("uol_action"):
             try:
                 from app.services.missions.uol_action_handlers import (
@@ -1427,6 +1487,18 @@ class SmartMissionExecutor:
             state = state_after
 
         if success:
+            blocked = self._verify_post_step_or_human(
+                step,
+                contract,
+                before,
+                state_after,
+                t0,
+                retries=retries,
+                strategy=last_strategy_used,
+                _uol_tel=_uol_tel,
+            )
+            if blocked is not None:
+                return blocked
             duration_ms = int((time.time() - t0) * 1000)
             self.learning.record_success(
                 run_id=self.run_id,
@@ -1529,6 +1601,52 @@ class SmartMissionExecutor:
         )
 
     # ── Sub-rutinas ──────────────────────────────────────────────
+
+    def _verify_post_step_or_human(
+        self,
+        step: MissionStep,
+        contract: StepContract,
+        before: Dict[str, Any],
+        state_after: StateSnapshot,
+        t0: float,
+        *,
+        retries: int,
+        strategy: Optional[str],
+        _uol_tel: Any,
+    ) -> Optional[StepOutcome]:
+        """Return needs_human outcome when post-step verification fails."""
+        try:
+            from app.services.missions.post_step_verifier import (
+                OUTCOME_NOT_CONFIRMED,
+                verify_step_outcome,
+            )
+
+            verification = verify_step_outcome(
+                step,
+                contract,
+                before,
+                state_after,
+                strategy_used=strategy,
+            )
+            if verification.passed:
+                return None
+            return self._uol_telemetry_finish_step(
+                _uol_tel,
+                self._needs_human_outcome(
+                    step,
+                    contract,
+                    verification.human_message or "No confirmé el resultado del paso.",
+                    before,
+                    t0,
+                    retries=retries,
+                    strategy=strategy or "post_verify:failed",
+                    state_after=state_after.to_dict(),
+                    error=verification.failure_code or OUTCOME_NOT_CONFIRMED,
+                ),
+            )
+        except Exception as exc:
+            log.debug("[PostVerify] %s", exc)
+            return None
 
     def _uol_telemetry_finish_step(
         self,
